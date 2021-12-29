@@ -6,11 +6,11 @@ import (
 	"strconv"
 
 	. "github.com/schrenker/go_aoc/tools"
-	. "github.com/schrenker/go_aoc/y2015"
+	"github.com/schrenker/go_aoc/y2015"
 )
 
 var challenges = map[string]Challenge{
-	"2015/01": DayOne{},
+	"2015/01": y2015.DayOne{},
 }
 
 func main() {
