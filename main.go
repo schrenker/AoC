@@ -11,6 +11,7 @@ import (
 
 var challenges = map[string]Challenge{
 	"2015/01": y2015.DayOne{},
+	"2015/02": y2015.DayTwo{},
 }
 
 func main() {
