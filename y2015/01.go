@@ -10,10 +10,10 @@ type DayOne struct{}
 
 func (d DayOne) PartOne() {
 	acc := 0
-	for _, i := range tools.ReadFileBytes("input/2015/01.txt") {
-		if i == '(' {
+	for _, v := range tools.ReadFileBytes("input/2015/01.txt") {
+		if v == '(' {
 			acc++
-		} else if i == ')' {
+		} else if v == ')' {
 			acc--
 		}
 	}
@@ -21,5 +21,16 @@ func (d DayOne) PartOne() {
 }
 
 func (d DayOne) PartTwo() {
-	fmt.Println("testualnie2")
+	acc := 0
+	for i, v := range tools.ReadFileBytes("input/2015/01.txt") {
+		if acc < 0 {
+			fmt.Println(i)
+			break
+		}
+		if v == '(' {
+			acc++
+		} else if v == ')' {
+			acc--
+		}
+	}
 }
