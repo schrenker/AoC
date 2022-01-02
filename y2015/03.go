@@ -35,5 +35,23 @@ func (d DayThree) PartOne() {
 }
 
 func (d DayThree) PartTwo() {
-
+	visits := make(map[coords]int)
+	x := []int{0, 0}
+	y := []int{0, 0}
+	visits[coords{x: x[0], y: y[0]}]++
+	for i, v := range tools.ReadFileBytes("input/2015/03.txt") {
+		turn := i % 2
+		switch v {
+		case '>':
+			x[turn]++
+		case '<':
+			x[turn]--
+		case '^':
+			y[turn]++
+		case 'v':
+			y[turn]--
+		}
+		visits[coords{x: x[turn], y: y[turn]}]++
+	}
+	fmt.Println(len(visits))
 }
