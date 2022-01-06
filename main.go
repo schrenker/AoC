@@ -13,6 +13,7 @@ var challenges = map[string]Challenge{
 	"2015/01": y2015.DayOne{},
 	"2015/02": y2015.DayTwo{},
 	"2015/03": y2015.DayThree{},
+	"2015/04": y2015.DayFour{},
 }
 
 func main() {
