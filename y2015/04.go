@@ -10,17 +10,20 @@ import (
 
 type DayFour struct{}
 
-func (d DayFour) PartOne() {
+func mineAdventCoin(comparator string) int {
 	input := tools.ReadFileString("input/2015/04.txt")
 	for i := 0; ; i++ {
 		hash := tools.GetMD5(strings.TrimSpace(input) + strconv.Itoa(i))
-		if hash[:5] == "00000" {
-			fmt.Println(i)
-			break
+		if hash[:len(comparator)] == comparator {
+			return i
 		}
 	}
 }
 
-func (d DayFour) PartTwo() {
+func (d DayFour) PartOne() {
+	fmt.Println(mineAdventCoin("00000"))
+}
 
+func (d DayFour) PartTwo() {
+	fmt.Println(mineAdventCoin("000000"))
 }
