@@ -45,6 +45,32 @@ func hasDoubleLetters(str string) bool {
 	return false
 }
 
+func hasAlternateLetters(str string) bool {
+	for i := 0; i < len(str)-2; i++ {
+		if str[i] == str[i+2] {
+			return true
+		}
+	}
+	return false
+}
+
+func hasPairs(str string) bool {
+	pairs := make(map[string][]int)
+	for i := 0; i < len(str)-1; i++ {
+		pairs[str[i:i+2]] = append(pairs[str[i:i+2]], i)
+	}
+	for _, v := range pairs {
+		if len(v) > 1 {
+			for i := 0; i < len(v)-1; i++ {
+				if v[i+1]-v[i] > 1 {
+					return true
+				}
+			}
+		}
+	}
+	return false
+}
+
 func (d DayFive) PartOne() {
 	data := tools.ReadFileStringSlice("input/2015/05.txt")
 	acc := 0
@@ -57,4 +83,12 @@ func (d DayFive) PartOne() {
 }
 
 func (d DayFive) PartTwo() {
+	data := tools.ReadFileStringSlice("input/2015/05.txt")
+	acc := 0
+	for _, v := range data {
+		if hasAlternateLetters(v) && hasPairs(v) {
+			acc++
+		}
+	}
+	fmt.Println(acc)
 }

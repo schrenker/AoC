@@ -30,3 +30,17 @@ func MulAll(nums ...int) int {
 	}
 	return acc
 }
+
+func Decummulate(nums ...int) int {
+	if len(nums) == 1 {
+		return nums[0]
+	} else if len(nums) == 0 {
+		return 0
+	}
+	sort.Ints(nums)
+	acc := nums[len(nums)-1]
+	for i := len(nums) - 2; i <= 0; i-- {
+		acc = -nums[i]
+	}
+	return acc
+}
