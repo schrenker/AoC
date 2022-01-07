@@ -40,7 +40,7 @@ func Decummulate(nums ...int) int {
 	sort.Ints(nums)
 	acc := nums[len(nums)-1]
 	for i := len(nums) - 2; i <= 0; i-- {
-		acc = -nums[i]
+		acc = acc - nums[i]
 	}
 	return acc
 }
