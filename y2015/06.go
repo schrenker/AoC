@@ -76,6 +76,72 @@ func (b *boolGrid) parseCommand(command string) {
 	}
 }
 
+type intGrid [][]int
+
+func makeIntGrid() intGrid {
+	grid := make(intGrid, 1000, 1000)
+	for i := range grid {
+		grid[i] = make([]int, 1000, 1000)
+		for j := range grid[i] {
+			grid[i][j] = 0
+		}
+	}
+	return grid
+}
+
+func (g *intGrid) turnOff(pos []int) {
+
+	for i := pos[0]; i <= pos[2]; i++ {
+		for j := pos[1]; j <= pos[3]; j++ {
+			if (*g)[i][j] > 0 {
+				(*g)[i][j]--
+			}
+		}
+	}
+}
+
+func (g *intGrid) turnOn(pos []int) {
+
+	for i := pos[0]; i <= pos[2]; i++ {
+		for j := pos[1]; j <= pos[3]; j++ {
+			(*g)[i][j]++
+		}
+	}
+}
+
+func (g *intGrid) toggle(pos []int) {
+
+	for i := pos[0]; i <= pos[2]; i++ {
+		for j := pos[1]; j <= pos[3]; j++ {
+
+			(*g)[i][j] += 2
+		}
+	}
+}
+
+func (g intGrid) countLights() int {
+	acc := 0
+	for _, v := range g {
+		for _, vv := range v {
+			acc += vv
+		}
+	}
+	return acc
+}
+
+func (g *intGrid) parseCommand(command string) {
+	tmp := strings.Split(command, " ")
+	if tmp[0] == "toggle" {
+		g.toggle(parsePos(tmp[1], tmp[3]))
+	} else if tmp[0] == "turn" {
+		if tmp[1] == "on" {
+			g.turnOn(parsePos(tmp[2], tmp[4]))
+		} else {
+			g.turnOff(parsePos(tmp[2], tmp[4]))
+		}
+	}
+}
+
 func parsePos(start, finish string) []int {
 	tmpSta := strings.Split(start, ",")
 	tmpFin := strings.Split(finish, ",")
@@ -96,4 +162,10 @@ func (d DaySix) PartOne() {
 }
 
 func (d DaySix) PartTwo() {
+	data := tools.ReadFileStringSlice("input/2015/06.txt")
+	grid := makeIntGrid()
+	for _, v := range data {
+		grid.parseCommand(v)
+	}
+	fmt.Println(grid.countLights())
 }
