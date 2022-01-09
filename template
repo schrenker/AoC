@@ -1,0 +1,9 @@
+package
+
+type Day_ struct{}
+
+func (d Day_) PartOne() {
+}
+
+func (d Day_) PartTwo() {
+}
