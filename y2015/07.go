@@ -16,6 +16,10 @@ func (w *wireMap) decode(op string) error {
 	operands := strings.Split(op, " -> ")
 	source := strings.Split(operands[0], " ")
 
+	if _, ok := (*w)[operands[1]]; ok {
+		return nil
+	}
+
 	switch len(source) {
 
 	case 1:
@@ -117,4 +121,35 @@ func (d DaySeven) PartOne() {
 }
 
 func (d DaySeven) PartTwo() {
+	operations := tools.ReadFileStringSlice("input/2015/07.txt")
+	wires := make(wireMap)
+	for {
+		for i := 0; i < len(operations); i++ {
+			err := wires.decode(operations[i])
+			if err == nil {
+				operations = tools.RemoveElementString(operations, i)
+				break
+			}
+		}
+		if len(operations) == 1 && operations[0] == "" {
+			break
+		}
+	}
+	signalA := wires["a"]
+	operations = tools.ReadFileStringSlice("input/2015/07.txt")
+	wires = make(wireMap)
+	wires["b"] = signalA
+	for {
+		for i := 0; i < len(operations); i++ {
+			err := wires.decode(operations[i])
+			if err == nil {
+				operations = tools.RemoveElementString(operations, i)
+				break
+			}
+		}
+		if len(operations) == 1 && operations[0] == "" {
+			break
+		}
+	}
+	fmt.Println(wires["a"])
 }
