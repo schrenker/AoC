@@ -19,7 +19,11 @@ func ReadFileStringSlice(path string) []string {
 	if err != nil {
 		panic(fmt.Sprintf("No file %v found", path))
 	}
-	return strings.Split(string(data), "\n")
+	spl := strings.Split(string(data), "\n")
+	if spl[len(spl)-1] == "" {
+		return spl[:len(spl)-1]
+	}
+	return spl
 }
 
 func ReadFileBytes(path string) []byte {
