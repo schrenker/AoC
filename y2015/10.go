@@ -33,7 +33,6 @@ func looknsay(seq []byte) []byte {
 
 func (d DayTen) PartOne() {
 	data := tools.ReadFileBytes("input/2015/10.txt")
-	data = bytes.TrimSpace(data)
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
 	}
@@ -42,7 +41,6 @@ func (d DayTen) PartOne() {
 
 func (d DayTen) PartTwo() {
 	data := tools.ReadFileBytes("input/2015/10.txt")
-	data = bytes.TrimSpace(data)
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)
 	}

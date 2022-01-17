@@ -1,6 +1,7 @@
 package tools
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"strings"
@@ -31,5 +32,5 @@ func ReadFileBytes(path string) []byte {
 	if err != nil {
 		panic(fmt.Sprintf("No file %v found", path))
 	}
-	return data
+	return bytes.TrimSpace(data)
 }
