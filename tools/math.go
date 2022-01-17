@@ -44,3 +44,15 @@ func Decummulate(nums ...int) int {
 	}
 	return acc
 }
+
+func MultipleEqualInt(nums ...int) bool {
+	if len(nums) < 2 {
+		return true
+	}
+	for i := 0; i < len(nums); i++ {
+		if nums[0] != nums[i] {
+			return false
+		}
+	}
+	return true
+}
