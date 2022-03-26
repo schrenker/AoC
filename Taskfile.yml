@@ -1,0 +1,36 @@
+---
+version: '3'
+
+tasks:
+  new1:
+    cmds:
+      - echo "{{.DAY}}"
+      - go run . {{.DAY}} 01
+    vars:
+      DAY:
+        sh: >
+          cat challenge.go |
+          tail -2 |
+          head -1 |
+          tr -d '[:space:]' |
+          cut -d '"' -f 2 |
+          tr '/' ' '
+
+  new2:
+    cmds:
+      - go run . {{.DAY}} 02
+    vars:
+      DAY:
+        sh: >
+          cat challenge.go |
+          tail -2 |
+          head -1 |
+          tr -d '[:space:]' |
+          cut -d '"' -f 2 |
+          tr '/' ' '
+
+
+  run:
+    cmds:
+      - go run . {{.CLI_ARGS}}
+...
