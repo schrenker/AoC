@@ -109,7 +109,7 @@ func (d DaySeven) PartOne() {
 		for i := 0; i < len(operations); i++ {
 			err := wires.decode(operations[i])
 			if err == nil {
-				operations = tools.RemoveElementString(operations, i)
+				operations = tools.RemoveElement(operations, i)
 				break
 			}
 		}
@@ -127,7 +127,7 @@ func (d DaySeven) PartTwo() {
 		for i := 0; i < len(operations); i++ {
 			err := wires.decode(operations[i])
 			if err == nil {
-				operations = tools.RemoveElementString(operations, i)
+				operations = tools.RemoveElement(operations, i)
 				break
 			}
 		}
@@ -143,7 +143,7 @@ func (d DaySeven) PartTwo() {
 		for i := 0; i < len(operations); i++ {
 			err := wires.decode(operations[i])
 			if err == nil {
-				operations = tools.RemoveElementString(operations, i)
+				operations = tools.RemoveElement(operations, i)
 				break
 			}
 		}
