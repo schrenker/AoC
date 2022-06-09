@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/schrenker/go_aoc/tools"
+	"github.com/schrenker/AoC/tools"
 )
 
 type DayTen struct{}

@@ -3,7 +3,7 @@ package y2015
 import (
 	"fmt"
 
-	"github.com/schrenker/go_aoc/tools"
+	"github.com/schrenker/AoC/tools"
 )
 
 type DayThree struct{}

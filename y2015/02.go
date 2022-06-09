@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/schrenker/go_aoc/tools"
+	"github.com/schrenker/AoC/tools"
 )
 
 type DayTwo struct{}

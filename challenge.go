@@ -1,6 +1,6 @@
 package main
 
-import "github.com/schrenker/go_aoc/y2015"
+import "github.com/schrenker/AoC/y2015"
 
 type challenge interface {
 	PartOne()
