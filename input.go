@@ -5,7 +5,6 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
-	"net/http/cookiejar"
 	"os"
 )
 
@@ -17,20 +16,14 @@ func truncateDay(day string) string {
 }
 
 func getData(year, day string) []byte {
-	fmt.Println("here")
-	jar, _ := cookiejar.New(nil)
-	client := &http.Client{
-		Jar: jar,
-	}
+	client := &http.Client{}
 
 	cookie := &http.Cookie{
 		Name:  "session",
 		Value: os.Getenv("session"),
 	}
 
-	reqDay := truncateDay(day)
-
-	req, _ := http.NewRequest("GET", fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, reqDay), nil)
+	req, _ := http.NewRequest("GET", fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, truncateDay(day)), nil)
 	req.AddCookie(cookie)
 
 	resp, err := client.Do(req)
