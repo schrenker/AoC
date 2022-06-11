@@ -33,4 +33,8 @@ tasks:
   run:
     cmds:
       - go run . {{.CLI_ARGS}}
+
+  gen:
+    cmds:
+      - ./generate.sh {{.CLI_ARGS}}
 ...

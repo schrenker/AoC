@@ -1,9 +1,11 @@
-package
+package YYYY
 
-type Day_ struct{}
+type DayDD struct{}
 
-func (d Day_) PartOne() {
+func (d DayDD) PartOne() interface{} {
+  return nil
 }
 
-func (d Day_) PartTwo() {
+func (d DayDD) PartTwo() interface{} {
+  return nil
 }
