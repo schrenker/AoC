@@ -113,7 +113,7 @@ func (d DaySeven) PartOne() {
 				break
 			}
 		}
-		if len(operations) == 1 && operations[0] == "" {
+		if (len(operations) == 1 && operations[0] == "") || (len(operations) == 0) {
 			break
 		}
 	}
@@ -131,7 +131,7 @@ func (d DaySeven) PartTwo() {
 				break
 			}
 		}
-		if len(operations) == 1 && operations[0] == "" {
+		if (len(operations) == 1 && operations[0] == "") || (len(operations) == 0) {
 			break
 		}
 	}
@@ -147,7 +147,7 @@ func (d DaySeven) PartTwo() {
 				break
 			}
 		}
-		if len(operations) == 1 && operations[0] == "" {
+		if (len(operations) == 1 && operations[0] == "") || (len(operations) == 0) {
 			break
 		}
 	}
