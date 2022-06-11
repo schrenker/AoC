@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -152,20 +151,20 @@ func parsePos(start, finish string) []int {
 	return []int{xs, ys, xf, yf}
 }
 
-func (d DaySix) PartOne() {
+func (d DaySix) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/06.txt")
 	grid := makeBoolGrid()
 	for _, v := range data {
 		grid.parseCommand(v)
 	}
-	fmt.Println(grid.countLights())
+	return grid.countLights()
 }
 
-func (d DaySix) PartTwo() {
+func (d DaySix) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/06.txt")
 	grid := makeIntGrid()
 	for _, v := range data {
 		grid.parseCommand(v)
 	}
-	fmt.Println(grid.countLights())
+	return grid.countLights()
 }

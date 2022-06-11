@@ -1,8 +1,6 @@
 package y2015
 
 import (
-	"fmt"
-
 	"github.com/schrenker/AoC/tools"
 )
 
@@ -73,13 +71,13 @@ func generateNextPass(pass []byte) []byte {
 	return pass
 }
 
-func (d DayEleven) PartOne() {
+func (d DayEleven) PartOne() interface{} {
 	data := tools.ReadFileBytes("input/2015/11.txt")
-	fmt.Println(string(generateNextPass(data)))
+	return string(generateNextPass(data))
 }
 
-func (d DayEleven) PartTwo() {
+func (d DayEleven) PartTwo() interface{} {
 	data := tools.ReadFileBytes("input/2015/11.txt")
 	data = incrementPass(generateNextPass(data), len(data)-1)
-	fmt.Println(string(generateNextPass(data)))
+	return string(generateNextPass(data))
 }

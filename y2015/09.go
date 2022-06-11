@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -49,7 +48,7 @@ func getPermDistance(s []string, dist map[edge]int) int {
 	return acc
 }
 
-func (d DayNine) PartOne() {
+func (d DayNine) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/09.txt")
 	perms := tools.StringPermutations(genUniqueArray(data))
 	distMap := genDistanceMap(data)
@@ -59,10 +58,10 @@ func (d DayNine) PartOne() {
 			min = tmp
 		}
 	}
-	fmt.Println(min)
+	return min
 }
 
-func (d DayNine) PartTwo() {
+func (d DayNine) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/09.txt")
 	perms := tools.StringPermutations(genUniqueArray(data))
 	distMap := genDistanceMap(data)
@@ -72,5 +71,5 @@ func (d DayNine) PartTwo() {
 			max = tmp
 		}
 	}
-	fmt.Println(max)
+	return max
 }

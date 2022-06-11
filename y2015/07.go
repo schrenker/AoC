@@ -102,7 +102,7 @@ var opMap = map[string]func(uint16, uint16) uint16{
 	"LSHIFT": lshift,
 }
 
-func (d DaySeven) PartOne() {
+func (d DaySeven) PartOne() interface{} {
 	operations := tools.ReadFileStringSlice("input/2015/07.txt")
 	wires := make(wireMap)
 	for {
@@ -117,12 +117,13 @@ func (d DaySeven) PartOne() {
 			break
 		}
 	}
-	fmt.Println(wires["a"])
+	return wires["a"]
 }
 
-func (d DaySeven) PartTwo() {
+func (d DaySeven) PartTwo() interface{} {
 	operations := tools.ReadFileStringSlice("input/2015/07.txt")
 	wires := make(wireMap)
+	wires["b"] = d.PartOne().(uint16)
 	for {
 		for i := 0; i < len(operations); i++ {
 			err := wires.decode(operations[i])
@@ -135,21 +136,5 @@ func (d DaySeven) PartTwo() {
 			break
 		}
 	}
-	signalA := wires["a"]
-	operations = tools.ReadFileStringSlice("input/2015/07.txt")
-	wires = make(wireMap)
-	wires["b"] = signalA
-	for {
-		for i := 0; i < len(operations); i++ {
-			err := wires.decode(operations[i])
-			if err == nil {
-				operations = tools.RemoveElement(operations, i)
-				break
-			}
-		}
-		if (len(operations) == 1 && operations[0] == "") || (len(operations) == 0) {
-			break
-		}
-	}
-	fmt.Println(wires["a"])
+	return wires["a"]
 }

@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strconv"
 
 	"github.com/schrenker/AoC/tools"
@@ -30,18 +29,18 @@ func looknsay(seq []byte) []byte {
 	return buf
 }
 
-func (d DayTen) PartOne() {
+func (d DayTen) PartOne() interface{} {
 	data := tools.ReadFileBytes("input/2015/10.txt")
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
 	}
-	fmt.Println(len(data))
+	return len(data)
 }
 
-func (d DayTen) PartTwo() {
+func (d DayTen) PartTwo() interface{} {
 	data := tools.ReadFileBytes("input/2015/10.txt")
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)
 	}
-	fmt.Println(len(data))
+	return len(data)
 }

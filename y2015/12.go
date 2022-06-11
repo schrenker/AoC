@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -11,7 +10,7 @@ import (
 
 type DayTwelve struct{}
 
-func (d DayTwelve) PartOne() {
+func (d DayTwelve) PartOne() interface{} {
 	data := tools.ReadFileString("input/2015/12.txt")
 	re := regexp.MustCompile(`[^\d\-,]`)
 	spl := strings.Split(re.ReplaceAllString(data, ""), ",")
@@ -20,8 +19,9 @@ func (d DayTwelve) PartOne() {
 		conv, _ := strconv.Atoi(v)
 		acc += conv
 	}
-	fmt.Println(acc)
+	return acc
 }
 
-func (d DayTwelve) PartTwo() {
+func (d DayTwelve) PartTwo() interface{} {
+	return nil
 }

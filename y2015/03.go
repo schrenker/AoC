@@ -1,8 +1,6 @@
 package y2015
 
 import (
-	"fmt"
-
 	"github.com/schrenker/AoC/tools"
 )
 
@@ -13,7 +11,7 @@ type coords struct {
 	y int
 }
 
-func (d DayThree) PartOne() {
+func (d DayThree) PartOne() interface{} {
 	visits := make(map[coords]int)
 	x := 0
 	y := 0
@@ -31,10 +29,10 @@ func (d DayThree) PartOne() {
 		}
 		visits[coords{x: x, y: y}]++
 	}
-	fmt.Println(len(visits))
+	return len(visits)
 }
 
-func (d DayThree) PartTwo() {
+func (d DayThree) PartTwo() interface{} {
 	visits := make(map[coords]int)
 	x := []int{0, 0}
 	y := []int{0, 0}
@@ -53,5 +51,5 @@ func (d DayThree) PartTwo() {
 		}
 		visits[coords{x: x[turn], y: y[turn]}]++
 	}
-	fmt.Println(len(visits))
+	return len(visits)
 }

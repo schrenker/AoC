@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/schrenker/AoC/tools"
@@ -37,7 +36,7 @@ func getCodeLength(str string) int {
 	return acc + 2
 }
 
-func (d DayEight) PartOne() {
+func (d DayEight) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/08.txt")
 	codeLength := 0
 	stringLength := 0
@@ -45,10 +44,10 @@ func (d DayEight) PartOne() {
 		codeLength += len(v)
 		stringLength += getStringLength(v)
 	}
-	fmt.Println(codeLength - stringLength)
+	return codeLength - stringLength
 }
 
-func (d DayEight) PartTwo() {
+func (d DayEight) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/08.txt")
 	codeLength := 0
 	actualCodeLength := 0
@@ -56,5 +55,5 @@ func (d DayEight) PartTwo() {
 		codeLength += len(v)
 		actualCodeLength += getCodeLength(v)
 	}
-	fmt.Println(actualCodeLength - codeLength)
+	return actualCodeLength - codeLength
 }

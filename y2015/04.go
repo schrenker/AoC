@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -20,10 +19,10 @@ func mineAdventCoin(comparator string) int {
 	}
 }
 
-func (d DayFour) PartOne() {
-	fmt.Println(mineAdventCoin("00000"))
+func (d DayFour) PartOne() interface{} {
+	return mineAdventCoin("00000")
 }
 
-func (d DayFour) PartTwo() {
-	fmt.Println(mineAdventCoin("000000"))
+func (d DayFour) PartTwo() interface{} {
+	return mineAdventCoin("000000")
 }

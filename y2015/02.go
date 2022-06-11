@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -10,7 +9,7 @@ import (
 
 type DayTwo struct{}
 
-func (d DayTwo) PartOne() {
+func (d DayTwo) PartOne() interface{} {
 	acc := 0
 	for _, line := range tools.ReadFileStringSlice("input/2015/02.txt") {
 		tmp := strings.Split(line, "x")
@@ -25,10 +24,10 @@ func (d DayTwo) PartOne() {
 
 		acc += tools.SumAll(2*first, 2*second, 2*third, (tools.GetMin(first, second, third)))
 	}
-	fmt.Println(acc)
+	return acc
 }
 
-func (d DayTwo) PartTwo() {
+func (d DayTwo) PartTwo() interface{} {
 	acc := 0
 	for _, line := range tools.ReadFileStringSlice("input/2015/02.txt") {
 		tmp := strings.Split(line, "x")
@@ -44,5 +43,5 @@ func (d DayTwo) PartTwo() {
 		twoShort := tools.GetMinMultiple(2, first, second, third)
 		acc += (2 * tools.SumAll(twoShort...)) + tools.MulAll(first, second, third)
 	}
-	fmt.Println(acc)
+	return acc
 }

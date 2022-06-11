@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/schrenker/AoC/tools"
@@ -71,7 +70,7 @@ func hasPairs(str string) bool {
 	return false
 }
 
-func (d DayFive) PartOne() {
+func (d DayFive) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/05.txt")
 	acc := 0
 	for _, v := range data {
@@ -79,10 +78,10 @@ func (d DayFive) PartOne() {
 			acc++
 		}
 	}
-	fmt.Println(acc)
+	return acc
 }
 
-func (d DayFive) PartTwo() {
+func (d DayFive) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/05.txt")
 	acc := 0
 	for _, v := range data {
@@ -90,5 +89,5 @@ func (d DayFive) PartTwo() {
 			acc++
 		}
 	}
-	fmt.Println(acc)
+	return acc
 }
