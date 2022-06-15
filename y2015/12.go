@@ -1,6 +1,8 @@
 package y2015
 
 import (
+	"encoding/json"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
@@ -23,5 +25,11 @@ func (d DayTwelve) PartOne() interface{} {
 }
 
 func (d DayTwelve) PartTwo() interface{} {
-	return nil
+	data := tools.ReadFileBytes("input/2015/12.txt")
+	var jsonDump []interface{}
+	err := json.Unmarshal(data, &jsonDump)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return jsonDump[0]
 }
