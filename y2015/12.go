@@ -2,6 +2,7 @@ package y2015
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -31,5 +32,38 @@ func (d DayTwelve) PartTwo() interface{} {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	return jsonDump[0]
+	return procSlice(jsonDump)
 }
+
+func procSlice(slc []interface{}) float64 {
+	var acc float64 = 0
+
+	for i := range slc {
+
+		switch slc[i].(type) {
+		case []interface{}:
+			acc += procSlice(slc[i].([]interface{}))
+		case map[string]interface{}:
+			fmt.Println("mep")
+		default:
+			acc += procNumber(slc[i])
+		}
+
+	}
+	return acc
+}
+
+func procNumber(num interface{}) float64 {
+
+	switch num.(type) {
+	case int:
+		return float64(num.(int))
+	case float64:
+		return num.(float64)
+	}
+	return 0
+}
+
+// func procMap(mp map[string]interface{}) int {
+
+// }
