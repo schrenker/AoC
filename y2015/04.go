@@ -7,7 +7,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayFour struct{}
+type Day04 struct{}
 
 func mineAdventCoin(comparator string) int {
 	input := tools.ReadFileString("input/2015/04.txt")
@@ -19,10 +19,10 @@ func mineAdventCoin(comparator string) int {
 	}
 }
 
-func (d DayFour) PartOne() interface{} {
+func (d Day04) PartOne() interface{} {
 	return mineAdventCoin("00000")
 }
 
-func (d DayFour) PartTwo() interface{} {
+func (d Day04) PartTwo() interface{} {
 	return mineAdventCoin("000000")
 }

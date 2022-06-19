@@ -10,29 +10,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayTwelve struct{}
-
-func (d DayTwelve) PartOne() interface{} {
-	data := tools.ReadFileString("input/2015/12.txt")
-	re := regexp.MustCompile(`[^\d\-,]`)
-	spl := strings.Split(re.ReplaceAllString(data, ""), ",")
-	acc := 0
-	for _, v := range spl {
-		conv, _ := strconv.Atoi(v)
-		acc += conv
-	}
-	return acc
-}
-
-func (d DayTwelve) PartTwo() interface{} {
-	data := tools.ReadFileBytes("input/2015/12.txt")
-	var jsonDump []interface{}
-	err := json.Unmarshal(data, &jsonDump)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return procSlice(jsonDump)
-}
+type Day12 struct{}
 
 func procSlice(slc []interface{}) float64 {
 	var acc float64 = 0
@@ -83,4 +61,26 @@ func procMap(m map[string]interface{}) float64 {
 
 	}
 	return acc
+}
+
+func (d Day12) PartOne() interface{} {
+	data := tools.ReadFileString("input/2015/12.txt")
+	re := regexp.MustCompile(`[^\d\-,]`)
+	spl := strings.Split(re.ReplaceAllString(data, ""), ",")
+	acc := 0
+	for _, v := range spl {
+		conv, _ := strconv.Atoi(v)
+		acc += conv
+	}
+	return acc
+}
+
+func (d Day12) PartTwo() interface{} {
+	data := tools.ReadFileBytes("input/2015/12.txt")
+	var jsonDump []interface{}
+	err := json.Unmarshal(data, &jsonDump)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return procSlice(jsonDump)
 }

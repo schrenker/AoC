@@ -6,7 +6,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayEight struct{}
+type Day08 struct{}
 
 func getStringLength(str string) int {
 	acc := 0
@@ -36,7 +36,7 @@ func getCodeLength(str string) int {
 	return acc + 2
 }
 
-func (d DayEight) PartOne() interface{} {
+func (d Day08) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/08.txt")
 	codeLength := 0
 	stringLength := 0
@@ -47,7 +47,7 @@ func (d DayEight) PartOne() interface{} {
 	return codeLength - stringLength
 }
 
-func (d DayEight) PartTwo() interface{} {
+func (d Day08) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/08.txt")
 	codeLength := 0
 	actualCodeLength := 0

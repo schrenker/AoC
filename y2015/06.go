@@ -7,7 +7,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DaySix struct{}
+type Day06 struct{}
 
 type boolGrid [][]bool
 
@@ -151,7 +151,7 @@ func parsePos(start, finish string) []int {
 	return []int{xs, ys, xf, yf}
 }
 
-func (d DaySix) PartOne() interface{} {
+func (d Day06) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/06.txt")
 	grid := makeBoolGrid()
 	for _, v := range data {
@@ -160,7 +160,7 @@ func (d DaySix) PartOne() interface{} {
 	return grid.countLights()
 }
 
-func (d DaySix) PartTwo() interface{} {
+func (d Day06) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/06.txt")
 	grid := makeIntGrid()
 	for _, v := range data {

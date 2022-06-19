@@ -8,7 +8,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DaySeven struct{}
+type Day07 struct{}
 
 type wireMap map[string]uint16
 
@@ -102,7 +102,7 @@ var opMap = map[string]func(uint16, uint16) uint16{
 	"LSHIFT": lshift,
 }
 
-func (d DaySeven) PartOne() interface{} {
+func (d Day07) PartOne() interface{} {
 	operations := tools.ReadFileStringSlice("input/2015/07.txt")
 	wires := make(wireMap)
 	for {
@@ -120,7 +120,7 @@ func (d DaySeven) PartOne() interface{} {
 	return wires["a"]
 }
 
-func (d DaySeven) PartTwo() interface{} {
+func (d Day07) PartTwo() interface{} {
 	operations := tools.ReadFileStringSlice("input/2015/07.txt")
 	wires := make(wireMap)
 	wires["b"] = d.PartOne().(uint16)

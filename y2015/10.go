@@ -6,7 +6,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayTen struct{}
+type Day10 struct{}
 
 func looknsay(seq []byte) []byte {
 	buf := make([]byte, 0)
@@ -29,7 +29,7 @@ func looknsay(seq []byte) []byte {
 	return buf
 }
 
-func (d DayTen) PartOne() interface{} {
+func (d Day10) PartOne() interface{} {
 	data := tools.ReadFileBytes("input/2015/10.txt")
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
@@ -37,7 +37,7 @@ func (d DayTen) PartOne() interface{} {
 	return len(data)
 }
 
-func (d DayTen) PartTwo() interface{} {
+func (d Day10) PartTwo() interface{} {
 	data := tools.ReadFileBytes("input/2015/10.txt")
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)

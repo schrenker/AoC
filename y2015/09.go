@@ -8,7 +8,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayNine struct{}
+type Day09 struct{}
 
 type edge struct {
 	start string
@@ -48,7 +48,7 @@ func getPermDistance(s []string, dist map[edge]int) int {
 	return acc
 }
 
-func (d DayNine) PartOne() interface{} {
+func (d Day09) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/09.txt")
 	perms := tools.StringPermutations(genUniqueArray(data))
 	distMap := genDistanceMap(data)
@@ -61,7 +61,7 @@ func (d DayNine) PartOne() interface{} {
 	return min
 }
 
-func (d DayNine) PartTwo() interface{} {
+func (d Day09) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/09.txt")
 	perms := tools.StringPermutations(genUniqueArray(data))
 	distMap := genDistanceMap(data)

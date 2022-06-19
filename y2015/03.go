@@ -4,14 +4,14 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayThree struct{}
+type Day03 struct{}
 
 type coords struct {
 	x int
 	y int
 }
 
-func (d DayThree) PartOne() interface{} {
+func (d Day03) PartOne() interface{} {
 	visits := make(map[coords]int)
 	x := 0
 	y := 0
@@ -32,7 +32,7 @@ func (d DayThree) PartOne() interface{} {
 	return len(visits)
 }
 
-func (d DayThree) PartTwo() interface{} {
+func (d Day03) PartTwo() interface{} {
 	visits := make(map[coords]int)
 	x := []int{0, 0}
 	y := []int{0, 0}

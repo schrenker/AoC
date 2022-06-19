@@ -6,7 +6,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayFive struct{}
+type Day05 struct{}
 
 var vowels = "aeiou"
 var forbidden = []string{"ab", "cd", "pq", "xy"}
@@ -70,7 +70,7 @@ func hasPairs(str string) bool {
 	return false
 }
 
-func (d DayFive) PartOne() interface{} {
+func (d Day05) PartOne() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/05.txt")
 	acc := 0
 	for _, v := range data {
@@ -81,7 +81,7 @@ func (d DayFive) PartOne() interface{} {
 	return acc
 }
 
-func (d DayFive) PartTwo() interface{} {
+func (d Day05) PartTwo() interface{} {
 	data := tools.ReadFileStringSlice("input/2015/05.txt")
 	acc := 0
 	for _, v := range data {

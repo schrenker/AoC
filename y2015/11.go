@@ -4,7 +4,7 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayEleven struct{}
+type Day11 struct{}
 
 func incrementPass(pass []byte, idx int) []byte {
 	lower := 97
@@ -71,12 +71,12 @@ func generateNextPass(pass []byte) []byte {
 	return pass
 }
 
-func (d DayEleven) PartOne() interface{} {
+func (d Day11) PartOne() interface{} {
 	data := tools.ReadFileBytes("input/2015/11.txt")
 	return string(generateNextPass(data))
 }
 
-func (d DayEleven) PartTwo() interface{} {
+func (d Day11) PartTwo() interface{} {
 	data := tools.ReadFileBytes("input/2015/11.txt")
 	data = incrementPass(generateNextPass(data), len(data)-1)
 	return string(generateNextPass(data))

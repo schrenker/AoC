@@ -4,9 +4,9 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayOne struct{}
+type Day01 struct{}
 
-func (d DayOne) PartOne() interface{} {
+func (d Day01) PartOne() interface{} {
 	acc := 0
 	for _, v := range tools.ReadFileBytes("input/2015/01.txt") {
 		if v == '(' {
@@ -18,7 +18,7 @@ func (d DayOne) PartOne() interface{} {
 	return acc
 }
 
-func (d DayOne) PartTwo() interface{} {
+func (d Day01) PartTwo() interface{} {
 	acc := 0
 	for i, v := range tools.ReadFileBytes("input/2015/01.txt") {
 		if acc < 0 {

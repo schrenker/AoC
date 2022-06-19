@@ -7,9 +7,9 @@ import (
 	"github.com/schrenker/AoC/tools"
 )
 
-type DayTwo struct{}
+type Day02 struct{}
 
-func (d DayTwo) PartOne() interface{} {
+func (d Day02) PartOne() interface{} {
 	acc := 0
 	for _, line := range tools.ReadFileStringSlice("input/2015/02.txt") {
 		tmp := strings.Split(line, "x")
@@ -27,7 +27,7 @@ func (d DayTwo) PartOne() interface{} {
 	return acc
 }
 
-func (d DayTwo) PartTwo() interface{} {
+func (d Day02) PartTwo() interface{} {
 	acc := 0
 	for _, line := range tools.ReadFileStringSlice("input/2015/02.txt") {
 		tmp := strings.Split(line, "x")
