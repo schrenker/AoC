@@ -2,7 +2,6 @@ package y2015
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -44,7 +43,7 @@ func procSlice(slc []interface{}) float64 {
 		case []interface{}:
 			acc += procSlice(slc[i].([]interface{}))
 		case map[string]interface{}:
-			fmt.Println("mep")
+			acc += procMap(slc[i].(map[string]interface{}))
 		default:
 			acc += procNumber(slc[i])
 		}
@@ -64,6 +63,24 @@ func procNumber(num interface{}) float64 {
 	return 0
 }
 
-// func procMap(mp map[string]interface{}) int {
+func procMap(m map[string]interface{}) float64 {
+	var acc float64 = 0
 
-// }
+	for _, v := range m {
+
+		switch v.(type) {
+		case []interface{}:
+			acc += procSlice(v.([]interface{}))
+		case map[string]interface{}:
+			acc += procMap(v.(map[string]interface{}))
+		case string:
+			if v.(string) == "red" {
+				return 0
+			}
+		default:
+			acc += procNumber(v)
+		}
+
+	}
+	return acc
+}
