@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 )
@@ -27,15 +28,13 @@ func getData(year, day string) []byte {
 	req.AddCookie(cookie)
 
 	resp, err := client.Do(req)
+	if err != nil {
+		log.Fatalln(err)
+	}
 	defer resp.Body.Close()
 
-	if err != nil {
-		fmt.Println(err)
-		return nil
-	} else {
-		body, _ := io.ReadAll(resp.Body)
-		return body
-	}
+	body, _ := io.ReadAll(resp.Body)
+	return body
 }
 
 func checkIfInputAlreadyExists(year, day string) bool {
