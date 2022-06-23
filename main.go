@@ -8,7 +8,7 @@ import (
 
 func main() {
 	args := os.Args[1:]
-	if len(args) < 3 {
+	if len(args) != 3 {
 		panic(fmt.Sprintf("3 Arguments are required [year day part], but %v were provided", len(args)))
 	}
 
