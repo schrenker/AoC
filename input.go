@@ -24,7 +24,11 @@ func getData(year, day string) []byte {
 		Value: os.Getenv("session"),
 	}
 
-	req, _ := http.NewRequest("GET", fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, truncateDay(day)), nil)
+	req, err := http.NewRequest("GET", fmt.Sprintf("https://adventofcode.com/%v/day/%v/input", year, truncateDay(day)), nil)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer req.Body.Close()
 	req.AddCookie(cookie)
 
 	resp, err := client.Do(req)
