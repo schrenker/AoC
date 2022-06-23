@@ -6,3 +6,4 @@ tmp/
 input/
 .envrc
 .go/
+.direnv/
