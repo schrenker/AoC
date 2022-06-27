@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -22,7 +21,6 @@ func parseInput(input []string) map[string]map[string]int {
 		}
 
 		tmp := strings.Split(re.ReplaceAllString(input[i], " "), " ")
-		fmt.Println(tmp)
 		if result[tmp[0]] == nil {
 			result[tmp[0]] = make(map[string]int)
 		}

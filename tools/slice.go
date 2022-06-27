@@ -4,6 +4,15 @@ func RemoveElement[T any](s []T, idx int) []T {
 	return append(s[:idx], s[idx+1:]...)
 }
 
+func RemoveElementValue[T comparable](s []T, val T) []T {
+	for i := range s {
+		if s[i] == val {
+			s = RemoveElement(s, i)
+		}
+	}
+	return s
+}
+
 func StringPermutations(arr []string) [][]string {
 	var helper func([]string, int)
 	res := [][]string{}
