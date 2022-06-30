@@ -1,6 +1,18 @@
 package tools
 
-import "sort"
+import (
+	"sort"
+)
+
+func GetMax(nums ...int) int {
+	max := nums[0]
+	for _, v := range nums {
+		if max < v {
+			max = v
+		}
+	}
+	return max
+}
 
 func GetMin(nums ...int) int {
 	sort.Ints(nums)
@@ -55,4 +67,15 @@ func MultipleEqualInt(nums ...int) bool {
 		}
 	}
 	return true
+}
+
+func Mod(a, b int) int {
+	m := a % b
+	if a < 0 && b < 0 {
+		m -= b
+	}
+	if a < 0 && b > 0 {
+		m += b
+	}
+	return m
 }
