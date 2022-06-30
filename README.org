@@ -17,7 +17,7 @@ This repository collects my answers to all advent of code problems available. I 
 |       10 | **   |
 |       11 | **   |
 |       12 | **   |
-|       13 |      |
+|       13 | *    |
 |       14 |      |
 |       15 |      |
 |       16 |      |

@@ -38,9 +38,30 @@ func parseInput(input []string) map[string]map[string]int {
 	return result
 }
 
+func computeHappiness(order []string, scores map[string]map[string]int) int {
+	acc := 0
+	for i := range order {
+		acc = acc + scores[order[i]][order[tools.Mod(i-1, len(order))]] + scores[order[i]][order[tools.Mod(i+1, len(order))]]
+	}
+	return acc
+}
+
 func (d Day13) PartOne() interface{} {
-	guests := parseInput(tools.ReadFileStringSlice("input/2015/13.txt"))
-	return guests
+	guestMap := parseInput(tools.ReadFileStringSlice("input/2015/13.txt"))
+	guests := make([]string, 0)
+	for k := range guestMap {
+		if len(k) > 0 {
+			guests = append(guests, k)
+		}
+	}
+
+	guestPermutations := tools.StringPermutations(guests)
+	highest := -9999
+	for i := range guestPermutations {
+		highest = tools.GetMax(computeHappiness(guestPermutations[i], guestMap), highest)
+	}
+
+	return highest
 }
 
 func (d Day13) PartTwo() interface{} {
