@@ -4,6 +4,7 @@ import (
 	"sort"
 )
 
+// Get the highest number in the list
 func GetMax(nums ...int) int {
 	max := nums[0]
 	for _, v := range nums {
@@ -14,11 +15,13 @@ func GetMax(nums ...int) int {
 	return max
 }
 
+// Get the lowest number in the list
 func GetMin(nums ...int) int {
 	sort.Ints(nums)
 	return nums[0]
 }
 
+// Get X lowest numbers in the list
 func GetMinMultiple(amount int, nums ...int) []int {
 	sort.Ints(nums)
 	if len(nums) <= amount {
@@ -27,6 +30,7 @@ func GetMinMultiple(amount int, nums ...int) []int {
 	return nums[:amount]
 }
 
+// Sum all numbers in the list
 func SumAll(nums ...int) int {
 	acc := 0
 	for _, v := range nums {
@@ -35,6 +39,7 @@ func SumAll(nums ...int) int {
 	return acc
 }
 
+// Multiply all numbers in the list by themselves
 func MulAll(nums ...int) int {
 	acc := 1
 	for _, v := range nums {
@@ -43,6 +48,7 @@ func MulAll(nums ...int) int {
 	return acc
 }
 
+// Remove all numbers in the list from the highest number in the list
 func Decummulate(nums ...int) int {
 	if len(nums) == 1 {
 		return nums[0]
@@ -57,6 +63,7 @@ func Decummulate(nums ...int) int {
 	return acc
 }
 
+// checks if all numbers are equal to each other
 func MultipleEqualInt(nums ...int) bool {
 	if len(nums) < 2 {
 		return true
@@ -69,13 +76,14 @@ func MultipleEqualInt(nums ...int) bool {
 	return true
 }
 
-func Mod(a, b int) int {
-	m := a % b
-	if a < 0 && b < 0 {
-		m -= b
+// Positive modulo, returns non negative solution to x % d
+func PMod(x, d int) int {
+	x = x % d
+	if x >= 0 {
+		return x
 	}
-	if a < 0 && b > 0 {
-		m += b
+	if d < 0 {
+		return x - d
 	}
-	return m
+	return x + d
 }
