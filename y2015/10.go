@@ -30,7 +30,7 @@ func looknsay(seq []byte) []byte {
 }
 
 func (d Day10) PartOne() interface{} {
-	data := tools.ReadFileBytes("input/2015/10.txt")
+	data := tools.ReadFileBytes()
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
 	}
@@ -38,7 +38,7 @@ func (d Day10) PartOne() interface{} {
 }
 
 func (d Day10) PartTwo() interface{} {
-	data := tools.ReadFileBytes("input/2015/10.txt")
+	data := tools.ReadFileBytes()
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)
 	}

@@ -49,7 +49,7 @@ func getPermDistance(s []string, dist map[edge]int) int {
 }
 
 func (d Day09) PartOne() interface{} {
-	data := tools.ReadFileStringSlice("input/2015/09.txt")
+	data := tools.ReadFileStringSlice()
 	perms := tools.StringPermutations(genUniqueArray(data))
 	distMap := genDistanceMap(data)
 	min := math.MaxInt
@@ -62,7 +62,7 @@ func (d Day09) PartOne() interface{} {
 }
 
 func (d Day09) PartTwo() interface{} {
-	data := tools.ReadFileStringSlice("input/2015/09.txt")
+	data := tools.ReadFileStringSlice()
 	perms := tools.StringPermutations(genUniqueArray(data))
 	distMap := genDistanceMap(data)
 	max := math.MinInt

@@ -64,7 +64,7 @@ func procMap(m map[string]interface{}) float64 {
 }
 
 func (d Day12) PartOne() interface{} {
-	data := tools.ReadFileString("input/2015/12.txt")
+	data := tools.ReadFileString()
 	re := regexp.MustCompile(`[^\d\-,]`)
 	spl := strings.Split(re.ReplaceAllString(data, ""), ",")
 	acc := 0
@@ -76,7 +76,7 @@ func (d Day12) PartOne() interface{} {
 }
 
 func (d Day12) PartTwo() interface{} {
-	data := tools.ReadFileBytes("input/2015/12.txt")
+	data := tools.ReadFileBytes()
 	var jsonDump []interface{}
 	err := json.Unmarshal(data, &jsonDump)
 	if err != nil {

@@ -37,7 +37,7 @@ func getCodeLength(str string) int {
 }
 
 func (d Day08) PartOne() interface{} {
-	data := tools.ReadFileStringSlice("input/2015/08.txt")
+	data := tools.ReadFileStringSlice()
 	codeLength := 0
 	stringLength := 0
 	for _, v := range data {
@@ -48,7 +48,7 @@ func (d Day08) PartOne() interface{} {
 }
 
 func (d Day08) PartTwo() interface{} {
-	data := tools.ReadFileStringSlice("input/2015/08.txt")
+	data := tools.ReadFileStringSlice()
 	codeLength := 0
 	actualCodeLength := 0
 	for _, v := range data {

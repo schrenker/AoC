@@ -72,12 +72,12 @@ func generateNextPass(pass []byte) []byte {
 }
 
 func (d Day11) PartOne() interface{} {
-	data := tools.ReadFileBytes("input/2015/11.txt")
+	data := tools.ReadFileBytes()
 	return string(generateNextPass(data))
 }
 
 func (d Day11) PartTwo() interface{} {
-	data := tools.ReadFileBytes("input/2015/11.txt")
+	data := tools.ReadFileBytes()
 	data = incrementPass(generateNextPass(data), len(data)-1)
 	return string(generateNextPass(data))
 }

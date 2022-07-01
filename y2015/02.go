@@ -11,7 +11,7 @@ type Day02 struct{}
 
 func (d Day02) PartOne() interface{} {
 	acc := 0
-	for _, line := range tools.ReadFileStringSlice("input/2015/02.txt") {
+	for _, line := range tools.ReadFileStringSlice() {
 		tmp := strings.Split(line, "x")
 		numtmp := make([]int, 3)
 		for i, num := range tmp {
@@ -29,7 +29,7 @@ func (d Day02) PartOne() interface{} {
 
 func (d Day02) PartTwo() interface{} {
 	acc := 0
-	for _, line := range tools.ReadFileStringSlice("input/2015/02.txt") {
+	for _, line := range tools.ReadFileStringSlice() {
 		tmp := strings.Split(line, "x")
 		numtmp := make([]int, 3)
 		for i, num := range tmp {

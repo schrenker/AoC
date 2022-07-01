@@ -152,7 +152,7 @@ func parsePos(start, finish string) []int {
 }
 
 func (d Day06) PartOne() interface{} {
-	data := tools.ReadFileStringSlice("input/2015/06.txt")
+	data := tools.ReadFileStringSlice()
 	grid := makeBoolGrid()
 	for _, v := range data {
 		grid.parseCommand(v)
@@ -161,7 +161,7 @@ func (d Day06) PartOne() interface{} {
 }
 
 func (d Day06) PartTwo() interface{} {
-	data := tools.ReadFileStringSlice("input/2015/06.txt")
+	data := tools.ReadFileStringSlice()
 	grid := makeIntGrid()
 	for _, v := range data {
 		grid.parseCommand(v)

@@ -103,7 +103,7 @@ var opMap = map[string]func(uint16, uint16) uint16{
 }
 
 func (d Day07) PartOne() interface{} {
-	operations := tools.ReadFileStringSlice("input/2015/07.txt")
+	operations := tools.ReadFileStringSlice()
 	wires := make(wireMap)
 	for {
 		for i := 0; i < len(operations); i++ {
@@ -121,7 +121,7 @@ func (d Day07) PartOne() interface{} {
 }
 
 func (d Day07) PartTwo() interface{} {
-	operations := tools.ReadFileStringSlice("input/2015/07.txt")
+	operations := tools.ReadFileStringSlice()
 	wires := make(wireMap)
 	wires["b"] = d.PartOne().(uint16)
 	for {

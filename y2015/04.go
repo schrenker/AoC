@@ -10,7 +10,7 @@ import (
 type Day04 struct{}
 
 func mineAdventCoin(comparator string) int {
-	input := tools.ReadFileString("input/2015/04.txt")
+	input := tools.ReadFileString()
 	for i := 0; ; i++ {
 		hash := tools.GetMD5(strings.TrimSpace(input) + strconv.Itoa(i))
 		if hash[:len(comparator)] == comparator {

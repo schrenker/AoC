@@ -16,7 +16,7 @@ func (d Day03) PartOne() interface{} {
 	x := 0
 	y := 0
 	visits[coords{x: x, y: y}]++
-	for _, v := range tools.ReadFileBytes("input/2015/03.txt") {
+	for _, v := range tools.ReadFileBytes() {
 		switch v {
 		case '>':
 			x++
@@ -37,7 +37,7 @@ func (d Day03) PartTwo() interface{} {
 	x := []int{0, 0}
 	y := []int{0, 0}
 	visits[coords{x: x[0], y: y[0]}]++
-	for i, v := range tools.ReadFileBytes("input/2015/03.txt") {
+	for i, v := range tools.ReadFileBytes() {
 		turn := i % 2
 		switch v {
 		case '>':

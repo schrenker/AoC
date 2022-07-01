@@ -57,7 +57,7 @@ func computeHappiness(order []string, scores map[string]map[string]int) int {
 }
 
 func (d Day13) PartOne() interface{} {
-	guestMap := parseInput(tools.ReadFileStringSlice("input/2015/13.txt"))
+	guestMap := parseInput(tools.ReadFileStringSlice())
 	guests := make([]string, 0)
 	for k := range guestMap {
 		if len(k) > 0 {
@@ -75,7 +75,7 @@ func (d Day13) PartOne() interface{} {
 }
 
 func (d Day13) PartTwo() interface{} {
-	guestMap := parseInput(tools.ReadFileStringSlice("input/2015/13.txt"))
+	guestMap := parseInput(tools.ReadFileStringSlice())
 	guestMap = insertYourself(guestMap)
 	guests := make([]string, 0)
 	for k := range guestMap {
