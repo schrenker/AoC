@@ -3,9 +3,9 @@ package YYYY
 type DayDD struct{}
 
 func (d DayDD) PartOne() interface{} {
-  return nil
+  return 0
 }
 
 func (d DayDD) PartTwo() interface{} {
-  return nil
+  return 0
 }
