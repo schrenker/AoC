@@ -28,7 +28,6 @@ func getData(year, day string) []byte {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	defer req.Body.Close()
 	req.AddCookie(cookie)
 
 	resp, err := client.Do(req)
