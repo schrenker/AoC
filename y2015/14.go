@@ -11,9 +11,13 @@ import (
 type Day14 struct{}
 
 type reindeer struct {
-	distance    int
-	travelTime  int
-	restingTime int
+	distance        int
+	travelTime      int
+	restingTime     int
+	currentScore    int
+	currentDistance int
+	currentTime     int
+	isFlying        bool
 }
 
 func spawnReindeer(s string) reindeer {
@@ -32,9 +36,13 @@ func spawnReindeer(s string) reindeer {
 		})
 
 	return reindeer{
-		distance:    nums[0],
-		travelTime:  nums[1],
-		restingTime: nums[2],
+		distance:        nums[0],
+		travelTime:      nums[1],
+		restingTime:     nums[2],
+		currentScore:    0,
+		currentDistance: 0,
+		currentTime:     0,
+		isFlying:        true,
 	}
 }
 
@@ -56,6 +64,49 @@ func (r reindeer) getDistance(seconds int) int {
 	return distance
 }
 
+func (r *reindeer) second() {
+	r.currentTime++
+
+	if r.isFlying || (!r.isFlying && r.currentTime == r.restingTime) {
+		r.currentDistance += r.distance
+	}
+
+	if (!r.isFlying && r.currentTime == r.restingTime) || (r.isFlying && r.currentTime == r.travelTime) {
+		r.isFlying = !r.isFlying
+		r.currentTime = 0
+	}
+
+}
+
+func awardPoint(r []*reindeer) {
+	max := tools.Reduce(r, 0, func(s int, rein *reindeer) int {
+		if s < rein.currentDistance {
+			s = rein.currentDistance
+		}
+		return s
+	})
+
+	for i := range r {
+		fmt.Printf("%v %v %v %v\n", i, r[i].currentScore, r[i].currentDistance, max)
+	}
+
+	for i := range r {
+		if r[i].currentDistance == max {
+			r[i].currentScore++
+		}
+	}
+}
+
+func getWinner(r []*reindeer) int {
+	win := tools.Reduce(r, 0, func(s int, rein *reindeer) int {
+		if s < rein.currentScore {
+			s = rein.currentScore
+		}
+		return s
+	})
+	return win
+}
+
 func (d Day14) PartOne() interface{} {
 	data := tools.ReadFileStringSlice()
 	seconds := 2503
@@ -68,5 +119,26 @@ func (d Day14) PartOne() interface{} {
 }
 
 func (d Day14) PartTwo() interface{} {
-	return 0
+	data := tools.ReadFileStringSlice()
+	seconds := 2503
+	reindeers := []*reindeer{}
+	for _, v := range data {
+		rein := spawnReindeer(v)
+		reindeers = append(reindeers, &rein)
+	}
+
+	for i := 0; i < seconds; i++ {
+		for j := range reindeers {
+			reindeers[j].second()
+		}
+
+		awardPoint(reindeers)
+	}
+
+	return tools.Reduce(reindeers, 0, func(s int, rein *reindeer) int {
+		if s < rein.currentScore {
+			s = rein.currentScore
+		}
+		return s
+	})
 }
