@@ -67,15 +67,20 @@ func (r reindeer) getDistance(seconds int) int {
 func (r *reindeer) second() {
 	r.currentTime++
 
-	if r.isFlying || (!r.isFlying && r.currentTime == r.restingTime) {
+	if r.isFlying {
 		r.currentDistance += r.distance
+		if r.currentTime == r.travelTime {
+			r.currentTime = 0
+			r.isFlying = !r.isFlying
+		}
 	}
 
-	if (!r.isFlying && r.currentTime == r.restingTime) || (r.isFlying && r.currentTime == r.travelTime) {
-		r.isFlying = !r.isFlying
-		r.currentTime = 0
+	if !r.isFlying && r.currentTime != 0 {
+		if r.currentTime == r.restingTime {
+			r.currentTime = 0
+			r.isFlying = !r.isFlying
+		}
 	}
-
 }
 
 func awardPoint(r []*reindeer) {
