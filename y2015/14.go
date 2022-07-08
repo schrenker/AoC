@@ -92,10 +92,6 @@ func awardPoint(r []*reindeer) {
 	})
 
 	for i := range r {
-		fmt.Printf("%v %v %v %v\n", i, r[i].currentScore, r[i].currentDistance, max)
-	}
-
-	for i := range r {
 		if r[i].currentDistance == max {
 			r[i].currentScore++
 		}
