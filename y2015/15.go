@@ -10,16 +10,10 @@ import (
 
 type Day15 struct{}
 
-type ingredient struct {
-	capacity   int
-	durability int
-	flavor     int
-	texture    int
-	calories   int
-}
-
-func newIngredient(s string) ingredient {
+func newIngredientLight(s string) (string, map[string]int) {
 	s = strings.ReplaceAll(s, ",", "")
+	s = strings.ReplaceAll(s, ":", "")
+	name := strings.Split(s, " ")[0]
 	nums := tools.Map(
 		tools.Filter(
 			strings.Split(s, " "),
@@ -34,25 +28,51 @@ func newIngredient(s string) ingredient {
 			return num
 		})
 
-	return ingredient{
-		capacity:   nums[0],
-		durability: nums[1],
-		flavor:     nums[2],
-		texture:    nums[3],
-		calories:   nums[4],
+	return name, map[string]int{
+		"capacity":   nums[0],
+		"durability": nums[1],
+		"flavor":     nums[2],
+		"texture":    nums[3],
 	}
+}
 
+func calculateCurrentScore(cookie map[string]int, ingredients map[string]map[string]int) int {
+	result := 1
+	properties := make([]string, 0)
+	for k := range ingredients["Candy"] {
+		properties = append(properties, k)
+	}
+	for _, v := range properties {
+		tmp := 0
+		for j := range cookie {
+			tmp += cookie[j] * ingredients[j][v]
+		}
+		fmt.Println(tmp)
+		if tmp <= 0 {
+			continue
+		}
+		result *= tmp
+	}
+	return result
 }
 
 func (d Day15) PartOne() interface{} {
 	data := tools.ReadFileStringSlice()
-	base := &ingredient{}
-	ingredients := []*ingredient{}
+	ingredients := make(map[string]map[string]int)
+	cookie := make(map[string]int)
 	for i := range data {
-		ing := newIngredient(data[i])
-		ingredients = append(ingredients, &ing)
+		name, ing := newIngredientLight(data[i])
+		ingredients[name] = ing
 	}
-	fmt.Println(base)
+
+	for k := range ingredients {
+		cookie[k] = 0
+	}
+	cookie["Butterscotch"] = 44
+	cookie["Candy"] = 56
+	fmt.Println(cookie)
+	fmt.Println(ingredients)
+	fmt.Println(calculateCurrentScore(cookie, ingredients))
 	return 0
 }
 
