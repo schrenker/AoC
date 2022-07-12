@@ -4,7 +4,6 @@ version: '3'
 tasks:
   new1:
     cmds:
-      - echo "{{.DAY}}"
       - go run . {{.DAY}} 01
     vars:
       DAY:
