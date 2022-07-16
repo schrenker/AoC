@@ -111,3 +111,15 @@ func Filter[T any](s []T, f func(T) bool) []T {
 	}
 	return r
 }
+
+func RemoveDuplicates[T comparable](s []T) []T {
+	enc := make(map[T]bool)
+	for _, v := range s {
+		enc[v] = true
+	}
+	result := []T{}
+	for k := range enc {
+		result = append(result, k)
+	}
+	return result
+}
