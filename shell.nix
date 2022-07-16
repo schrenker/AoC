@@ -3,7 +3,12 @@
 with pkgs;
 
 mkShell {
-  buildInputs = [ go_1_18 golangci-lint ];
+  buildInputs = [
+    go_1_18
+    golangci-lint
+    nodejs
+    shellcheck
+  ];
 
   shellHook = ''
     go install github.com/x-motemen/gore/cmd/gore@latest
