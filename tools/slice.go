@@ -13,34 +13,6 @@ func RemoveElementValue[T comparable](s []T, val T) []T {
 	return s
 }
 
-func StringPermutations(arr []string) [][]string {
-	var helper func([]string, int)
-	res := [][]string{}
-
-	helper = func(arr []string, n int) {
-		if n == 1 {
-			tmp := make([]string, len(arr))
-			copy(tmp, arr)
-			res = append(res, tmp)
-		} else {
-			for i := 0; i < n; i++ {
-				helper(arr, n-1)
-				if n%2 == 1 {
-					tmp := arr[i]
-					arr[i] = arr[n-1]
-					arr[n-1] = tmp
-				} else {
-					tmp := arr[0]
-					arr[0] = arr[n-1]
-					arr[n-1] = tmp
-				}
-			}
-		}
-	}
-	helper(arr, len(arr))
-	return res
-}
-
 func Permutations[T comparable](arr []T) [][]T {
 	var helper func([]T, int)
 	res := [][]T{}
@@ -112,6 +84,7 @@ func Filter[T any](s []T, f func(T) bool) []T {
 	return r
 }
 
+// RemoveDuplicates takes slice s as an input, and returns a slice with duplicate values removed
 func RemoveDuplicates[T comparable](s []T) []T {
 	enc := make(map[T]bool)
 	for _, v := range s {
