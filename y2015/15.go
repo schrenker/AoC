@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -36,18 +35,13 @@ func newIngredientLight(s string) (string, map[string]int) {
 	}
 }
 
-func calculateCurrentScore(cookie map[string]int, ingredients map[string]map[string]int) int {
+func makeCookie(cookie map[string]int, ingredients map[string]map[string]int, properties []string) int {
 	result := 1
-	properties := make([]string, 0)
-	for k := range ingredients["Candy"] {
-		properties = append(properties, k)
-	}
 	for _, v := range properties {
 		tmp := 0
 		for j := range cookie {
 			tmp += cookie[j] * ingredients[j][v]
 		}
-		fmt.Println(tmp)
 		if tmp <= 0 {
 			continue
 		}
@@ -59,21 +53,40 @@ func calculateCurrentScore(cookie map[string]int, ingredients map[string]map[str
 func (d Day15) PartOne() interface{} {
 	data := tools.ReadFileStringSlice()
 	ingredients := make(map[string]map[string]int)
-	cookie := make(map[string]int)
+	ingredientList := []string{}
+	properties := make([]string, 0)
+
 	for i := range data {
 		name, ing := newIngredientLight(data[i])
 		ingredients[name] = ing
+		ingredientList = append(ingredientList, name)
 	}
 
-	for k := range ingredients {
-		cookie[k] = 0
+	for i := range ingredients[ingredientList[0]] {
+		properties = append(properties, i)
 	}
-	cookie["Butterscotch"] = 44
-	cookie["Candy"] = 56
-	fmt.Println(cookie)
-	fmt.Println(ingredients)
-	fmt.Println(calculateCurrentScore(cookie, ingredients))
-	return 0
+
+	result := 0
+	for i := 0; i <= 100; i++ {
+		for j := 0; j <= 100; j++ {
+			for k := 0; k <= 100; k++ {
+				for l := 0; l <= 100; l++ {
+					if i+j+k+l != 100 {
+						continue
+					} else {
+						result = tools.GetMax(result, makeCookie(map[string]int{
+							ingredientList[0]: i,
+							ingredientList[1]: j,
+							ingredientList[2]: k,
+							ingredientList[3]: l,
+						}, ingredients, properties))
+					}
+				}
+			}
+		}
+	}
+
+	return result
 }
 
 func (d Day15) PartTwo() interface{} {
