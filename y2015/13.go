@@ -65,7 +65,7 @@ func (d Day13) PartOne() interface{} {
 		}
 	}
 
-	guestPermutations := tools.StringPermutations(guests)
+	guestPermutations := tools.Permutations(guests)
 	highest := -9999
 	for i := range guestPermutations {
 		highest = tools.GetMax(computeHappiness(guestPermutations[i], guestMap), highest)
@@ -84,7 +84,7 @@ func (d Day13) PartTwo() interface{} {
 		}
 	}
 
-	guestPermutations := tools.StringPermutations(guests)
+	guestPermutations := tools.Permutations(guests)
 	highest := -9999
 	for i := range guestPermutations {
 		highest = tools.GetMax(computeHappiness(guestPermutations[i], guestMap), highest)
