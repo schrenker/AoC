@@ -29,10 +29,7 @@ func pairLetters(pass []byte) bool {
 	for _, v := range pairs {
 		acc += v
 	}
-	if acc >= 2 {
-		return true
-	}
-	return false
+	return acc >= 2
 }
 
 func forbiddenLetters(pass []byte) bool {

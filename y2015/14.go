@@ -1,7 +1,6 @@
 package y2015
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -51,7 +50,6 @@ func (r reindeer) getDistance(seconds int) int {
 	for i, elapsed := 0, 0; elapsed <= seconds; i++ {
 		if i%2 == 0 {
 			if r.travelTime+elapsed > seconds {
-				fmt.Printf("%v, %v, %v\n", r.travelTime, elapsed, (r.travelTime + elapsed))
 				distance = distance + r.distance*(seconds-elapsed)
 				return distance
 			}
@@ -96,16 +94,6 @@ func awardPoint(r []*reindeer) {
 			r[i].currentScore++
 		}
 	}
-}
-
-func getWinner(r []*reindeer) int {
-	win := tools.Reduce(r, 0, func(s int, rein *reindeer) int {
-		if s < rein.currentScore {
-			s = rein.currentScore
-		}
-		return s
-	})
-	return win
 }
 
 func (d Day14) PartOne() interface{} {

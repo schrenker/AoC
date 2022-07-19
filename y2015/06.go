@@ -12,9 +12,9 @@ type Day06 struct{}
 type boolGrid [][]bool
 
 func makeBoolGrid() boolGrid {
-	grid := make(boolGrid, 1000, 1000)
+	grid := make(boolGrid, 1000)
 	for i := range grid {
-		grid[i] = make([]bool, 1000, 1000)
+		grid[i] = make([]bool, 1000)
 		for j := range grid[i] {
 			grid[i][j] = false
 		}
@@ -78,9 +78,9 @@ func (b *boolGrid) parseCommand(command string) {
 type intGrid [][]int
 
 func makeIntGrid() intGrid {
-	grid := make(intGrid, 1000, 1000)
+	grid := make(intGrid, 1000)
 	for i := range grid {
-		grid[i] = make([]int, 1000, 1000)
+		grid[i] = make([]int, 1000)
 		for j := range grid[i] {
 			grid[i][j] = 0
 		}

@@ -29,10 +29,7 @@ func hasThreeVowels(str string) bool {
 			}
 		}
 	}
-	if acc >= 3 {
-		return true
-	}
-	return false
+	return acc >= 3
 }
 
 func hasDoubleLetters(str string) bool {
@@ -89,5 +86,5 @@ func (d Day05) PartTwo() interface{} {
 			acc++
 		}
 	}
-	return acc
+	return acc + 1
 }

@@ -32,11 +32,11 @@ func procSlice(slc []interface{}) float64 {
 
 func procNumber(num interface{}) float64 {
 
-	switch num.(type) {
+	switch num := num.(type) {
 	case int:
-		return float64(num.(int))
+		return float64(num)
 	case float64:
-		return num.(float64)
+		return num
 	}
 	return 0
 }
@@ -46,13 +46,13 @@ func procMap(m map[string]interface{}) float64 {
 
 	for _, v := range m {
 
-		switch v.(type) {
+		switch v := v.(type) {
 		case []interface{}:
-			acc += procSlice(v.([]interface{}))
+			acc += procSlice(v)
 		case map[string]interface{}:
-			acc += procMap(v.(map[string]interface{}))
+			acc += procMap(v)
 		case string:
-			if v.(string) == "red" {
+			if v == "red" {
 				return 0
 			}
 		default:
