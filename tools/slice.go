@@ -1,5 +1,7 @@
 package tools
 
+import "math"
+
 func RemoveElement[T any](s []T, idx int) []T {
 	return append(s[:idx], s[idx+1:]...)
 }
@@ -39,6 +41,22 @@ func Permutations[T comparable](arr []T) [][]T {
 	}
 	helper(arr, len(arr))
 	return res
+}
+
+func Combinations[T any](source []T) [][]T {
+	combinationList := make([][]T, 0)
+
+	for i := 1; i < int(math.Pow(2, float64(len(source)))); i++ {
+		list := make([]T, 0)
+		for j := 0; j < len(source); j++ {
+			if i&int(math.Pow(2, float64(j))) > 0 {
+				list = append(list, source[j])
+			}
+		}
+		combinationList = append(combinationList, list)
+	}
+
+	return combinationList
 }
 
 // Reverse takes in a slice of any type.
