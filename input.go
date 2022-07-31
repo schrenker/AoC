@@ -43,7 +43,10 @@ func getData(year, day string) []byte {
 func checkIfInputAlreadyExists(year, day string) bool {
 	_, err := os.Stat(fmt.Sprintf("./input/%v/%v.txt", year, day))
 	if os.IsNotExist(err) {
-		os.MkdirAll(fmt.Sprintf("./input/%v/", year), 0755)
+		err := os.MkdirAll(fmt.Sprintf("./input/%v/", year), 0755)
+		if err != nil {
+			log.Fatalln(err)
+		}
 		return false
 	}
 	return true
@@ -51,6 +54,9 @@ func checkIfInputAlreadyExists(year, day string) bool {
 
 func getInput(year, day string) {
 	if !checkIfInputAlreadyExists(year, day) {
-		ioutil.WriteFile(fmt.Sprintf("./input/%v/%v.txt", year, day), getData(year, day), 0644)
+		err := ioutil.WriteFile(fmt.Sprintf("./input/%v/%v.txt", year, day), getData(year, day), 0644)
+		if err != nil {
+			log.Fatalln(err)
+		}
 	}
 }
