@@ -8,6 +8,7 @@ mkShell {
     golangci-lint
     nodejs
     shellcheck
+    rnix-lsp
   ];
 
   shellHook = ''

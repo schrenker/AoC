@@ -59,6 +59,35 @@ func Combinations[T any](source []T) [][]T {
 	return combinationList
 }
 
+func CombinationsNArrays[T any](source [][]T) [][]T {
+	n := len(source)
+	indices := make([]int, n)
+	result := make([][]T, 0)
+
+	for {
+		tmp := make([]T, 0)
+		for i := 0; i < n; i++ {
+			tmp = append(tmp, source[i][indices[i]])
+		}
+		result = append(result, tmp)
+
+		next := n - 1
+		for next >= 0 && (indices[next]+1 >= len(source[next])) {
+			next--
+		}
+
+		if next < 0 {
+			return result
+		}
+
+		indices[next]++
+
+		for i := next + 1; i < n; i++ {
+			indices[i] = 0
+		}
+	}
+}
+
 // Reverse takes in a slice of any type.
 // It returns the slice reversed
 func Reverse[T any](s []T) []T {
