@@ -38,6 +38,49 @@ func (d Day19) PartOne() interface{} {
 	return len(uniq)
 }
 
+func transform(molecule string, step int, replacements map[string][]string, processed map[string]bool) int {
+	fmt.Printf("Processing molecule: %v\n", molecule)
+	if _, ok := replacements[molecule]; ok {
+		return step
+	}
+
+	processed[molecule] = true
+
+	min := 99999
+	for i := 0; i < len(molecule); i++ {
+		for j := i + 1; j <= len(molecule); j++ {
+			s, err := deconstruct(molecule[i:j], replacements)
+			if err == nil {
+				if _, ok := processed[molecule[:i]+s+molecule[j:]]; !ok {
+					min = tools.GetMin(min, transform(fmt.Sprintf("%v%v%v", molecule[:i], s, molecule[j:]), step+1, replacements, processed))
+				}
+
+			}
+		}
+	}
+	return min
+}
+
+func deconstruct(substr string, replacements map[string][]string) (string, error) {
+	for i, v := range replacements {
+		for _, s := range v {
+			if substr == s {
+				return i, nil
+			}
+		}
+	}
+	return "", fmt.Errorf("not found")
+}
+
 func (d Day19) PartTwo() interface{} {
-	return 0
+	data := tools.ReadFileStringSlice()
+	src := data[len(data)-1]
+	replacements := make(map[string][]string)
+	processed := make(map[string]bool)
+
+	for i := 0; i < len(data)-2; i++ {
+		tmp := strings.Split(data[i], " => ")
+		replacements[tmp[0]] = append(replacements[tmp[0]], tmp[1])
+	}
+	return transform(src, 1, replacements, processed)
 }
