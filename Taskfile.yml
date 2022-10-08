@@ -36,4 +36,8 @@ tasks:
   gen:
     cmds:
       - ./generate.sh {{.CLI_ARGS}}
+
+  bench:
+    cmds:
+      - go test -v -bench . ./benchmark/...
 ...
