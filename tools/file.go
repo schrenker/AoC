@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func getInputPath() string {
+func GetDefaultInputPath() string {
 	p, err := exec.Command("go", "env", "GOMOD").Output()
 	if err != nil {
 		log.Fatalln(err)
@@ -16,16 +16,16 @@ func getInputPath() string {
 	return strings.TrimSpace(strings.Replace(string(p), "go.mod", "", 1)) + "input/" + os.Args[1] + "/" + os.Args[2] + ".txt"
 }
 
-func ReadFileString() string {
-	data, err := os.ReadFile(getInputPath())
+func ReadFileString(path string) string {
+	data, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	return string(data)
 }
 
-func ReadFileStringSlice() []string {
-	data, err := os.ReadFile(getInputPath())
+func ReadFileStringSlice(path string) []string {
+	data, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -36,8 +36,8 @@ func ReadFileStringSlice() []string {
 	return spl
 }
 
-func ReadFileBytes() []byte {
-	data, err := os.ReadFile(getInputPath())
+func ReadFileBytes(path string) []byte {
+	data, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalln(err)
 	}

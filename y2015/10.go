@@ -29,16 +29,16 @@ func looknsay(seq []byte) []byte {
 	return buf
 }
 
-func (d Day10) PartOne() interface{} {
-	data := tools.ReadFileBytes()
+func (d Day10) PartOne(path string) interface{} {
+	data := tools.ReadFileBytes(path)
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
 	}
 	return len(data)
 }
 
-func (d Day10) PartTwo() interface{} {
-	data := tools.ReadFileBytes()
+func (d Day10) PartTwo(path string) interface{} {
+	data := tools.ReadFileBytes(path)
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)
 	}

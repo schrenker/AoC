@@ -9,8 +9,8 @@ import (
 
 type Day04 struct{}
 
-func mineAdventCoin(comparator string) int {
-	input := tools.ReadFileString()
+func mineAdventCoin(comparator string, path string) int {
+	input := tools.ReadFileString(path)
 	for i := 0; ; i++ {
 		hash := tools.GetMD5(strings.TrimSpace(input) + strconv.Itoa(i))
 		if hash[:len(comparator)] == comparator {
@@ -19,10 +19,10 @@ func mineAdventCoin(comparator string) int {
 	}
 }
 
-func (d Day04) PartOne() interface{} {
-	return mineAdventCoin("00000")
+func (d Day04) PartOne(path string) interface{} {
+	return mineAdventCoin("00000", path)
 }
 
-func (d Day04) PartTwo() interface{} {
-	return mineAdventCoin("000000")
+func (d Day04) PartTwo(path string) interface{} {
+	return mineAdventCoin("000000", path)
 }

@@ -8,9 +8,9 @@ import (
 
 type Day17 struct{}
 
-func (d Day17) PartOne() interface{} {
+func (d Day17) PartOne(path string) interface{} {
 	target := 150
-	data := tools.Combinations(tools.ReadFileStringSlice())
+	data := tools.Combinations(tools.ReadFileStringSlice(path))
 	acc := 0
 	for _, d := range data {
 		tmp := make([]int, len(d))
@@ -24,9 +24,9 @@ func (d Day17) PartOne() interface{} {
 	return acc
 }
 
-func (d Day17) PartTwo() interface{} {
+func (d Day17) PartTwo(path string) interface{} {
 	target := 150
-	data := tools.Combinations(tools.ReadFileStringSlice())
+	data := tools.Combinations(tools.ReadFileStringSlice(path))
 	min := make(map[int]int)
 	for _, d := range data {
 		tmp := make([]int, len(d))

@@ -67,8 +67,8 @@ func hasPairs(str string) bool {
 	return false
 }
 
-func (d Day05) PartOne() interface{} {
-	data := tools.ReadFileStringSlice()
+func (d Day05) PartOne(path string) interface{} {
+	data := tools.ReadFileStringSlice(path)
 	acc := 0
 	for _, v := range data {
 		if !hasForbidden(v) && hasThreeVowels(v) && hasDoubleLetters(v) {
@@ -78,8 +78,8 @@ func (d Day05) PartOne() interface{} {
 	return acc
 }
 
-func (d Day05) PartTwo() interface{} {
-	data := tools.ReadFileStringSlice()
+func (d Day05) PartTwo(path string) interface{} {
+	data := tools.ReadFileStringSlice(path)
 	acc := 0
 	for _, v := range data {
 		if hasAlternateLetters(v) && hasPairs(v) {

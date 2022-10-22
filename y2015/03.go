@@ -11,12 +11,12 @@ type coords struct {
 	y int
 }
 
-func (d Day03) PartOne() interface{} {
+func (d Day03) PartOne(path string) interface{} {
 	visits := make(map[coords]int)
 	x := 0
 	y := 0
 	visits[coords{x: x, y: y}]++
-	for _, v := range tools.ReadFileBytes() {
+	for _, v := range tools.ReadFileBytes(path) {
 		switch v {
 		case '>':
 			x++
@@ -32,12 +32,12 @@ func (d Day03) PartOne() interface{} {
 	return len(visits)
 }
 
-func (d Day03) PartTwo() interface{} {
+func (d Day03) PartTwo(path string) interface{} {
 	visits := make(map[coords]int)
 	x := []int{0, 0}
 	y := []int{0, 0}
 	visits[coords{x: x[0], y: y[0]}]++
-	for i, v := range tools.ReadFileBytes() {
+	for i, v := range tools.ReadFileBytes(path) {
 		turn := i % 2
 		switch v {
 		case '>':

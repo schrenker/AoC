@@ -68,13 +68,13 @@ func generateNextPass(pass []byte) []byte {
 	return pass
 }
 
-func (d Day11) PartOne() interface{} {
-	data := tools.ReadFileBytes()
+func (d Day11) PartOne(path string) interface{} {
+	data := tools.ReadFileBytes(path)
 	return string(generateNextPass(data))
 }
 
-func (d Day11) PartTwo() interface{} {
-	data := tools.ReadFileBytes()
+func (d Day11) PartTwo(path string) interface{} {
+	data := tools.ReadFileBytes(path)
 	data = incrementPass(generateNextPass(data), len(data)-1)
 	return string(generateNextPass(data))
 }

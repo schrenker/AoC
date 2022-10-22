@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"github.com/schrenker/AoC/tools"
 )
 
 func main() {
@@ -13,9 +15,9 @@ func main() {
 	}
 
 	if i, _ := strconv.Atoi(args[2]); i == 1 {
-		fmt.Println(challenges[args[0]+"/"+args[1]].PartOne())
+		fmt.Println(challenges[args[0]+"/"+args[1]].PartOne(tools.GetDefaultInputPath()))
 	} else if i == 2 {
-		fmt.Println(challenges[args[0]+"/"+args[1]].PartTwo())
+		fmt.Println(challenges[args[0]+"/"+args[1]].PartTwo(tools.GetDefaultInputPath()))
 	} else {
 		panic(fmt.Sprintf("unrecognized part value: %v. Expected [01, 1, 02, 2]", args[2]))
 	}

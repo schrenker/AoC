@@ -24,8 +24,8 @@ func turnOnCornerLights(state [][]bool) {
 	state[len(state)-1][len(state[0])-1] = true
 }
 
-func createState() [][]bool {
-	data := tools.ReadFileStringSlice()
+func createState(path string) [][]bool {
+	data := tools.ReadFileStringSlice(path)
 	result := make([][]bool, len(data))
 	for i := range data {
 		result[i] = make([]bool, len(data[i]))
@@ -93,16 +93,16 @@ func evolve(state [][]bool) [][]bool {
 	return reference
 }
 
-func (d Day18) PartOne() interface{} {
-	state := createState()
+func (d Day18) PartOne(path string) interface{} {
+	state := createState(path)
 	for i := 0; i < 100; i++ {
 		state = evolve(state)
 	}
 	return countState(state)
 }
 
-func (d Day18) PartTwo() interface{} {
-	state := createState()
+func (d Day18) PartTwo(path string) interface{} {
+	state := createState(path)
 	turnOnCornerLights(state)
 	for i := 0; i < 100; i++ {
 		state = evolve(state)

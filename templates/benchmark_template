@@ -1,17 +1,18 @@
-package yYYYY_test
+package yYYYY_bench
 
 import (
 	"os"
 	"testing"
 
 	"github.com/schrenker/AoC/yYYYY"
+    "github.com/schrenker/AoC/tools"
 )
 
 func BenchmarkDayDDPartOne(b *testing.B) {
 	t := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "01"}
 	for i := 0; i < b.N; i++ {
-		t.PartOne()
+		t.PartOne(tools.GetDefaultInputPath())
 	}
 }
 
@@ -19,6 +20,6 @@ func BenchmarkDayDDPartTwo(b *testing.B) {
 	t := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "02"}
 	for i := 0; i < b.N; i++ {
-		t.PartTwo()
+		t.PartTwo(tools.GetDefaultInputPath())
 	}
 }

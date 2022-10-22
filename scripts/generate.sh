@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 mkdir -p "y$1"
 cp -n templates/template "y$1/$2.go"

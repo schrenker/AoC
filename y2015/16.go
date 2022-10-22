@@ -67,8 +67,8 @@ func matchAuntRanges(base map[string]int, line string) bool {
 	return true
 }
 
-func (d Day16) PartOne() interface{} {
-	data := tools.ReadFileStringSlice()
+func (d Day16) PartOne(path string) interface{} {
+	data := tools.ReadFileStringSlice(path)
 	matchingAunts := []int{}
 	for i := range data {
 		if matchAunt(base, data[i]) {
@@ -83,8 +83,8 @@ func (d Day16) PartOne() interface{} {
 	}
 }
 
-func (d Day16) PartTwo() interface{} {
-	data := tools.ReadFileStringSlice()
+func (d Day16) PartTwo(path string) interface{} {
+	data := tools.ReadFileStringSlice(path)
 	matchingAunts := []int{}
 	for i := range data {
 		if matchAuntRanges(base, data[i]) {

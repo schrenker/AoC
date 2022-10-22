@@ -151,8 +151,8 @@ func parsePos(start, finish string) []int {
 	return []int{xs, ys, xf, yf}
 }
 
-func (d Day06) PartOne() interface{} {
-	data := tools.ReadFileStringSlice()
+func (d Day06) PartOne(path string) interface{} {
+	data := tools.ReadFileStringSlice(path)
 	grid := makeBoolGrid()
 	for _, v := range data {
 		grid.parseCommand(v)
@@ -160,8 +160,8 @@ func (d Day06) PartOne() interface{} {
 	return grid.countLights()
 }
 
-func (d Day06) PartTwo() interface{} {
-	data := tools.ReadFileStringSlice()
+func (d Day06) PartTwo(path string) interface{} {
+	data := tools.ReadFileStringSlice(path)
 	grid := makeIntGrid()
 	for _, v := range data {
 		grid.parseCommand(v)

@@ -6,9 +6,9 @@ import (
 
 type Day01 struct{}
 
-func (d Day01) PartOne() interface{} {
+func (d Day01) PartOne(path string) interface{} {
 	acc := 0
-	for _, v := range tools.ReadFileBytes() {
+	for _, v := range tools.ReadFileBytes(path) {
 		if v == '(' {
 			acc++
 		} else if v == ')' {
@@ -18,9 +18,9 @@ func (d Day01) PartOne() interface{} {
 	return acc
 }
 
-func (d Day01) PartTwo() interface{} {
+func (d Day01) PartTwo(path string) interface{} {
 	acc := 0
-	for i, v := range tools.ReadFileBytes() {
+	for i, v := range tools.ReadFileBytes(path) {
 		if acc < 0 {
 			return i
 		}
