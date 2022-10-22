@@ -1,4 +1,4 @@
-package main
+package tools
 
 import (
 	"fmt"
@@ -8,6 +8,10 @@ import (
 	"net/http"
 	"os"
 )
+
+func init() {
+	getInput(os.Args[1], os.Args[2])
+}
 
 func truncateDay(day string) string {
 	if day[0] == '0' {
