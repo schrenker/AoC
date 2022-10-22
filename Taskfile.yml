@@ -68,7 +68,8 @@ tasks:
 
   benchAll:
     cmds:
-      - go test -v -bench . ./benchmark/...
+      - go test -bench . ./benchmark/...
+      - defer: rm -rf ./benchmark/*/input
 
   test:
     cmds:
