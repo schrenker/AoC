@@ -7,7 +7,7 @@ import (
 	"github.com/schrenker/AoC/y2015"
 )
 
-func BenchmarkDayOnePartOne(b *testing.B) {
+func BenchmarkDay01PartOne(b *testing.B) {
 	t := y2015.Day01{}
 	os.Args = []string{"cmd", "2015", "01", "01"}
 	for i := 0; i < b.N; i++ {
@@ -15,7 +15,7 @@ func BenchmarkDayOnePartOne(b *testing.B) {
 	}
 }
 
-func BenchmarkDayOnePartTwo(b *testing.B) {
+func BenchmarkDay01PartTwo(b *testing.B) {
 	t := y2015.Day01{}
 	os.Args = []string{"cmd", "2015", "01", "02"}
 	for i := 0; i < b.N; i++ {

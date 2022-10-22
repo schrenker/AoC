@@ -2,6 +2,14 @@
 version: '3'
 
 tasks:
+  gen:
+    cmds:
+      - scripts/generate.sh {{.CLI_ARGS}}
+
+  run:
+    cmds:
+      - go run . {{.CLI_ARGS}}
+
   new1:
     cmds:
       - go run . {{.DAY}} 01
@@ -28,16 +36,57 @@ tasks:
           cut -d '"' -f 2 |
           tr '/' ' '
 
-
-  run:
-    cmds:
-      - go run . {{.CLI_ARGS}}
-
-  gen:
-    cmds:
-      - ./generate.sh {{.CLI_ARGS}}
-
   bench:
     cmds:
+      - scripts/bench.sh {{.CLI_ARGS}}
+
+  bnew1:
+    cmds:
+      - scripts/bench.sh {{.DAY}} 01
+    vars:
+      DAY:
+        sh: >
+          cat challenge.go |
+          tail -2 |
+          head -1 |
+          tr -d '[:space:]' |
+          cut -d '"' -f 2 |
+          tr '/' ' '
+
+  bnew2:
+    cmds:
+      - scripts/bench.sh {{.DAY}} 02
+    vars:
+      DAY:
+        sh: >
+          cat challenge.go |
+          tail -2 |
+          head -1 |
+          tr -d '[:space:]' |
+          cut -d '"' -f 2 |
+          tr '/' ' '
+
+  benchAll:
+    cmds:
       - go test -v -bench . ./benchmark/...
+
+  test:
+    cmds:
+      - echo
+
+  tnew1:
+    cmds:
+      - echo
+
+  tnew2:
+    cmds:
+      - echo
+
+  testAll:
+    cmds:
+      - echo
+
+  default:
+    cmds:
+      - task --list-all
 ...
