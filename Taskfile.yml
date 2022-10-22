@@ -3,14 +3,26 @@ version: '3'
 
 tasks:
   gen:
+    summary: |
+      Usage: task gen -- YEAR DAY
+
+      Generate new AoC 'day' files. This includes actual code file in yXXXX directory, as well as benchmark and test files. Lastly, it adds day entry to challenge.go file.
     cmds:
       - scripts/generate.sh {{.CLI_ARGS}}
 
   run:
+    summary: |
+      Usage: task run -- YEAR DAY PART
+
+      Run selected challenge, based on provided year, day and part.
     cmds:
       - go run . {{.CLI_ARGS}}
 
   new1:
+    summary: |
+      Usage: task new1
+
+      Run part one of the newest existing entry on challenge list.
     cmds:
       - go run . {{.DAY}} 01
     vars:
@@ -24,6 +36,10 @@ tasks:
           tr '/' ' '
 
   new2:
+    summary: |
+      Usage: task new2
+
+      Run part two of the newest existing entry on challenge list.
     cmds:
       - go run . {{.DAY}} 02
     vars:
@@ -37,12 +53,22 @@ tasks:
           tr '/' ' '
 
   bench:
+    summary: |
+      Usage: task bench -- YEAR DAY [PART]
+
+      Run benchmarks for selected day, optionally specifying part.
     cmds:
       - scripts/bench.sh {{.CLI_ARGS}}
+      - defer: rm -rf ./benchmark/*/input
 
   bnew1:
+    summary: |
+      Usage: task bnew1
+
+      Run benchmarks for the part one of the newest existing entry on challenge list.
     cmds:
       - scripts/bench.sh {{.DAY}} 01
+      - defer: rm -rf ./benchmark/*/input
     vars:
       DAY:
         sh: >
@@ -54,8 +80,13 @@ tasks:
           tr '/' ' '
 
   bnew2:
+    summary: |
+      Usage: task bnew2
+
+      Run benchmarks for the part two of the newest existing entry on challenge list.
     cmds:
       - scripts/bench.sh {{.DAY}} 02
+      - defer: rm -rf ./benchmark/*/input
     vars:
       DAY:
         sh: >
@@ -67,27 +98,51 @@ tasks:
           tr '/' ' '
 
   benchAll:
+    summary: |
+      Usage: task benchAll
+
+      Run all benchmarks, for all days, for all years.
     cmds:
       - go test -bench . ./benchmark/...
       - defer: rm -rf ./benchmark/*/input
 
   test:
+    summary: |
+      Usage: task test -- YEAR DAY [PART]
+
+      Run tests for selected day, optionally specifying part.
     cmds:
       - echo
 
   tnew1:
+    summary: |
+      Usage: task tnew1
+
+      Run tests for the part one of the newest existing entry on challenge list.
     cmds:
       - echo
 
   tnew2:
+    summary: |
+      Usage: task tnew2
+
+      Run tests for the part two of the newest existing entry on challenge list.
     cmds:
       - echo
 
   testAll:
+    summary: |
+      Usage: task testAll
+
+      Run all tests, for all days, for all years.
     cmds:
       - echo
 
   default:
+    summary: |
+      Usage: task
+
+      Show task list.
     cmds:
       - task --list-all
 ...
