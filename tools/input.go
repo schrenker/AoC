@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	getInput(os.Args[1], os.Args[2])
+	GetInput(os.Args[1], os.Args[2])
 }
 
 func truncateDay(day string) string {
@@ -56,7 +56,7 @@ func checkIfInputAlreadyExists(year, day string) bool {
 	return true
 }
 
-func getInput(year, day string) {
+func GetInput(year, day string) {
 	if !checkIfInputAlreadyExists(year, day) {
 		err := ioutil.WriteFile(fmt.Sprintf("./input/%v/%v.txt", year, day), getData(year, day), 0644)
 		if err != nil {

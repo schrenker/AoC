@@ -1,0 +1,23 @@
+package yYYYY_test
+
+import (
+	"os"
+	"testing"
+
+	"github.com/schrenker/AoC/tools"
+	"github.com/schrenker/AoC/yYYYY"
+)
+
+func TestDayDDPartOne(t *testing.T) {
+	d := yYYYY.DayDD{}
+	os.Args = []string{"cmd", "YYYY", "DD", "01"}
+	tools.GetInput("YYYY", "DD")
+    t.Errorf("No tests defined. Placeholder: %v", d)
+}
+
+func TestDayDDPartTwo(t *testing.T) {
+	d := yYYYY.DayDD{}
+	os.Args = []string{"cmd", "YYYY", "DD", "02"}
+	tools.GetInput("YYYY", "DD")
+    t.Errorf("No tests defined. Placeholder: %v", d)
+}

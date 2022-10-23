@@ -4,22 +4,24 @@ import (
 	"os"
 	"testing"
 
-	"github.com/schrenker/AoC/yYYYY"
     "github.com/schrenker/AoC/tools"
+	"github.com/schrenker/AoC/yYYYY"
 )
 
 func BenchmarkDayDDPartOne(b *testing.B) {
-	t := yYYYY.DayDD{}
+	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "01"}
+	tools.GetInput("YYYY", "DD")
 	for i := 0; i < b.N; i++ {
-		t.PartOne(tools.GetDefaultInputPath())
+		d.PartOne(tools.GetDefaultInputPath())
 	}
 }
 
 func BenchmarkDayDDPartTwo(b *testing.B) {
-	t := yYYYY.DayDD{}
+	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "02"}
+	tools.GetInput("YYYY", "DD")
 	for i := 0; i < b.N; i++ {
-		t.PartTwo(tools.GetDefaultInputPath())
+		d.PartTwo(tools.GetDefaultInputPath())
 	}
 }
