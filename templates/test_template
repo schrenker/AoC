@@ -1,6 +1,7 @@
 package yYYYY_test
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
@@ -12,12 +13,26 @@ func TestDayDDPartOne(t *testing.T) {
 	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "01"}
 	tools.GetInput("YYYY", "DD")
-    t.Errorf("No tests defined. Placeholder: %v", d)
+	expected := map[string]int{
+		"1": 0,
+	}
+	for i, v := range expected {
+		if r := d.PartOne(fmt.Sprintf("../testdata/yYYYY/DD/1.%v.txt", i)); r != v {
+			t.Fatalf("Error with test data file 1.%v.txt. Expected %v, got %v\n", i, v, r)
+		}
+	}
 }
 
 func TestDayDDPartTwo(t *testing.T) {
 	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "02"}
 	tools.GetInput("YYYY", "DD")
-    t.Errorf("No tests defined. Placeholder: %v", d)
+	expected := map[string]int{
+		"1": 0,
+	}
+	for i, v := range expected {
+		if r := d.PartOne(fmt.Sprintf("../testdata/yYYYY/DD/2.%v.txt", i)); r != v {
+			t.Fatalf("Error with test data file 2.%v.txt. Expected %v, got %v\n", i, v, r)
+		}
+	}
 }
