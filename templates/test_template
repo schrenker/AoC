@@ -31,7 +31,7 @@ func TestDayDDPartTwo(t *testing.T) {
 		"1": 0,
 	}
 	for i, v := range expected {
-		if r := d.PartOne(fmt.Sprintf("../testdata/yYYYY/DD/2.%v.txt", i)); r != v {
+		if r := d.PartTwo(fmt.Sprintf("../testdata/yYYYY/DD/2.%v.txt", i)); r != v {
 			t.Fatalf("Error with test data file 2.%v.txt. Expected %v, got %v\n", i, v, r)
 		}
 	}
