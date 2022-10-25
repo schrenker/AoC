@@ -15,6 +15,10 @@ func TestDay01PartOne(t *testing.T) {
 	tools.GetInput("2015", "01")
 	expected := map[string]int{
 		"1": 0,
+		"2": 3,
+		"3": 3,
+		"4": -1,
+		"5": -3,
 	}
 	for i, v := range expected {
 		if r := d.PartOne(fmt.Sprintf("../testdata/y2015/01/1.%v.txt", i)); r != v {
@@ -28,10 +32,11 @@ func TestDay01PartTwo(t *testing.T) {
 	os.Args = []string{"cmd", "2015", "01", "02"}
 	tools.GetInput("2015", "01")
 	expected := map[string]int{
-		"1": 0,
+		"1": 1,
+		"2": 5,
 	}
 	for i, v := range expected {
-		if r := d.PartOne(fmt.Sprintf("../testdata/y2015/01/2.%v.txt", i)); r != v {
+		if r := d.PartTwo(fmt.Sprintf("../testdata/y2015/01/2.%v.txt", i)); r != v {
 			t.Fatalf("Error with test data file 2.%v.txt. Expected %v, got %v\n", i, v, r)
 		}
 	}

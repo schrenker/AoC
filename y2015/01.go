@@ -21,13 +21,13 @@ func (d Day01) PartOne(path string) interface{} {
 func (d Day01) PartTwo(path string) interface{} {
 	acc := 0
 	for i, v := range tools.ReadFileBytes(path) {
-		if acc < 0 {
-			return i
-		}
 		if v == '(' {
 			acc++
 		} else if v == ')' {
 			acc--
+		}
+		if acc < 0 {
+			return i + 1
 		}
 	}
 	return acc
