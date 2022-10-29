@@ -43,14 +43,14 @@ func deconstruct(substr string, replacements map[string][]string) (string, error
 	return "", fmt.Errorf("not found")
 }
 
-func (d Day19) PartOne(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
-	src := data[len(data)-1]
+func (d Day19) PartOne(data []byte) interface{} {
+	str := tools.ByteToStringSlice(data)
+	src := str[len(str)-1]
 	replacements := make(map[string][]string)
 	uniq := make(map[string]bool)
 
-	for i := 0; i < len(data)-2; i++ {
-		tmp := strings.Split(data[i], " => ")
+	for i := 0; i < len(str)-2; i++ {
+		tmp := strings.Split(str[i], " => ")
 		replacements[tmp[0]] = append(replacements[tmp[0]], tmp[1])
 	}
 
@@ -72,14 +72,14 @@ func (d Day19) PartOne(path string) interface{} {
 	return len(uniq)
 }
 
-func (d Day19) PartTwo(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
-	src := data[len(data)-1]
+func (d Day19) PartTwo(data []byte) interface{} {
+	str := tools.ByteToStringSlice(data)
+	src := str[len(str)-1]
 	replacements := make(map[string][]string)
 	processed := make(map[string]bool)
 
-	for i := 0; i < len(data)-2; i++ {
-		tmp := strings.Split(data[i], " => ")
+	for i := 0; i < len(str)-2; i++ {
+		tmp := strings.Split(str[i], " => ")
 		replacements[tmp[0]] = append(replacements[tmp[0]], tmp[1])
 	}
 	return transform(src, 1, replacements, processed)

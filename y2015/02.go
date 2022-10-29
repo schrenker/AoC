@@ -9,9 +9,9 @@ import (
 
 type Day02 struct{}
 
-func (d Day02) PartOne(path string) interface{} {
+func (d Day02) PartOne(data []byte) interface{} {
 	acc := 0
-	for _, line := range tools.ReadFileStringSlice(path) {
+	for _, line := range tools.ByteToStringSlice(data) {
 		tmp := strings.Split(line, "x")
 		numtmp := make([]int, 3)
 		for i, num := range tmp {
@@ -27,9 +27,9 @@ func (d Day02) PartOne(path string) interface{} {
 	return acc
 }
 
-func (d Day02) PartTwo(path string) interface{} {
+func (d Day02) PartTwo(data []byte) interface{} {
 	acc := 0
-	for _, line := range tools.ReadFileStringSlice(path) {
+	for _, line := range tools.ByteToStringSlice(data) {
 		tmp := strings.Split(line, "x")
 		numtmp := make([]int, 3)
 		for i, num := range tmp {

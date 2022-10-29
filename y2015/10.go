@@ -2,8 +2,6 @@ package y2015
 
 import (
 	"strconv"
-
-	"github.com/schrenker/AoC/tools"
 )
 
 type Day10 struct{}
@@ -29,16 +27,14 @@ func looknsay(seq []byte) []byte {
 	return buf
 }
 
-func (d Day10) PartOne(path string) interface{} {
-	data := tools.ReadFileBytes(path)
+func (d Day10) PartOne(data []byte) interface{} {
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
 	}
 	return len(data)
 }
 
-func (d Day10) PartTwo(path string) interface{} {
-	data := tools.ReadFileBytes(path)
+func (d Day10) PartTwo(data []byte) interface{} {
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)
 	}

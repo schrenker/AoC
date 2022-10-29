@@ -1,14 +1,10 @@
 package y2015
 
-import (
-	"github.com/schrenker/AoC/tools"
-)
-
 type Day01 struct{}
 
-func (d Day01) PartOne(path string) interface{} {
+func (d Day01) PartOne(data []byte) interface{} {
 	acc := 0
-	for _, v := range tools.ReadFileBytes(path) {
+	for _, v := range data {
 		if v == '(' {
 			acc++
 		} else if v == ')' {
@@ -18,9 +14,9 @@ func (d Day01) PartOne(path string) interface{} {
 	return acc
 }
 
-func (d Day01) PartTwo(path string) interface{} {
+func (d Day01) PartTwo(data []byte) interface{} {
 	acc := 0
-	for i, v := range tools.ReadFileBytes(path) {
+	for i, v := range data {
 		if v == '(' {
 			acc++
 		} else if v == ')' {

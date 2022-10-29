@@ -96,22 +96,20 @@ func awardPoint(r []*reindeer) {
 	}
 }
 
-func (d Day14) PartOne(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
+func (d Day14) PartOne(data []byte) interface{} {
 	seconds := 2503
 	distances := []int{}
-	for _, v := range data {
+	for _, v := range tools.ByteToStringSlice(data) {
 		distances = append(distances, spawnReindeer(v).getDistance(seconds))
 	}
 
 	return tools.GetMax(distances...)
 }
 
-func (d Day14) PartTwo(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
+func (d Day14) PartTwo(data []byte) interface{} {
 	seconds := 2503
 	reindeers := []*reindeer{}
-	for _, v := range data {
+	for _, v := range tools.ByteToStringSlice(data) {
 		rein := spawnReindeer(v)
 		reindeers = append(reindeers, &rein)
 	}

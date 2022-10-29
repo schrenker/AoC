@@ -56,8 +56,8 @@ func computeHappiness(order []string, scores map[string]map[string]int) int {
 	return acc
 }
 
-func (d Day13) PartOne(path string) interface{} {
-	guestMap := parseInput(tools.ReadFileStringSlice(path))
+func (d Day13) PartOne(data []byte) interface{} {
+	guestMap := parseInput(tools.ByteToStringSlice(data))
 	guests := make([]string, 0)
 	for k := range guestMap {
 		if len(k) > 0 {
@@ -74,8 +74,8 @@ func (d Day13) PartOne(path string) interface{} {
 	return highest
 }
 
-func (d Day13) PartTwo(path string) interface{} {
-	guestMap := parseInput(tools.ReadFileStringSlice(path))
+func (d Day13) PartTwo(data []byte) interface{} {
+	guestMap := parseInput(tools.ByteToStringSlice(data))
 	guestMap = insertYourself(guestMap)
 	guests := make([]string, 0)
 	for k := range guestMap {

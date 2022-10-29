@@ -48,10 +48,10 @@ func getPermDistance(s []string, dist map[edge]int) int {
 	return acc
 }
 
-func (d Day09) PartOne(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
-	perms := tools.Permutations(genUniqueArray(data))
-	distMap := genDistanceMap(data)
+func (d Day09) PartOne(data []byte) interface{} {
+	str := tools.ByteToStringSlice(data)
+	perms := tools.Permutations(genUniqueArray(str))
+	distMap := genDistanceMap(str)
 	min := math.MaxInt
 	for _, v := range perms {
 		if tmp := getPermDistance(v, distMap); tmp < min {
@@ -61,10 +61,10 @@ func (d Day09) PartOne(path string) interface{} {
 	return min
 }
 
-func (d Day09) PartTwo(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
-	perms := tools.Permutations(genUniqueArray(data))
-	distMap := genDistanceMap(data)
+func (d Day09) PartTwo(data []byte) interface{} {
+	str := tools.ByteToStringSlice(data)
+	perms := tools.Permutations(genUniqueArray(str))
+	distMap := genDistanceMap(str)
 	max := math.MinInt
 	for _, v := range perms {
 		if tmp := getPermDistance(v, distMap); tmp > max {
