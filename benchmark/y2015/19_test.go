@@ -11,17 +11,15 @@ import (
 func BenchmarkDay19PartOne(b *testing.B) {
 	d := y2015.Day19{}
 	os.Args = []string{"cmd", "2015", "19", "01"}
-	tools.GetInput("2015", "19")
 	for i := 0; i < b.N; i++ {
-		d.PartOne(tools.GetDefaultInputPath())
+		d.PartOne(tools.ReadFileBytes(tools.GetDefaultInputPath()))
 	}
 }
 
 func BenchmarkDay19PartTwo(b *testing.B) {
 	d := y2015.Day19{}
 	os.Args = []string{"cmd", "2015", "19", "02"}
-	tools.GetInput("2015", "19")
 	for i := 0; i < b.N; i++ {
-		d.PartTwo(tools.GetDefaultInputPath())
+		d.PartTwo(tools.ReadFileBytes(tools.GetDefaultInputPath()))
 	}
 }
