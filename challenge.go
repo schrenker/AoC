@@ -1,6 +1,9 @@
 package main
 
-import "github.com/schrenker/AoC/y2015"
+import (
+	"github.com/schrenker/AoC/y2015"
+	"github.com/schrenker/AoC/y2022"
+)
 
 type challenge interface {
 	PartOne([]byte) interface{}
@@ -27,4 +30,5 @@ var challenges = map[string]challenge{
 	"2015/17": y2015.Day17{},
 	"2015/18": y2015.Day18{},
 	"2015/19": y2015.Day19{},
+	"2022/01": y2022.Day01{},
 }
