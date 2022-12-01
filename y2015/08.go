@@ -36,22 +36,20 @@ func getCodeLength(str string) int {
 	return acc + 2
 }
 
-func (d Day08) PartOne(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
+func (d Day08) PartOne(data []byte) interface{} {
 	codeLength := 0
 	stringLength := 0
-	for _, v := range data {
+	for _, v := range tools.ByteToStringSlice(data) {
 		codeLength += len(v)
 		stringLength += getStringLength(v)
 	}
 	return codeLength - stringLength
 }
 
-func (d Day08) PartTwo(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
+func (d Day08) PartTwo(data []byte) interface{} {
 	codeLength := 0
 	actualCodeLength := 0
-	for _, v := range data {
+	for _, v := range tools.ByteToStringSlice(data) {
 		codeLength += len(v)
 		actualCodeLength += getCodeLength(v)
 	}

@@ -24,13 +24,13 @@ func turnOnCornerLights(state [][]bool) {
 	state[len(state)-1][len(state[0])-1] = true
 }
 
-func createState(path string) [][]bool {
-	data := tools.ReadFileStringSlice(path)
+func createState(data []byte) [][]bool {
+	str := tools.ByteToStringSlice(data)
 	result := make([][]bool, len(data))
-	for i := range data {
-		result[i] = make([]bool, len(data[i]))
-		for j := range data[i] {
-			switch data[i][j] {
+	for i := range str {
+		result[i] = make([]bool, len(str[i]))
+		for j := range str[i] {
+			switch str[i][j] {
 			case '.':
 				result[i][j] = false
 			case '#':
@@ -93,16 +93,16 @@ func evolve(state [][]bool) [][]bool {
 	return reference
 }
 
-func (d Day18) PartOne(path string) interface{} {
-	state := createState(path)
+func (d Day18) PartOne(data []byte) interface{} {
+	state := createState(data)
 	for i := 0; i < 100; i++ {
 		state = evolve(state)
 	}
 	return countState(state)
 }
 
-func (d Day18) PartTwo(path string) interface{} {
-	state := createState(path)
+func (d Day18) PartTwo(data []byte) interface{} {
+	state := createState(data)
 	turnOnCornerLights(state)
 	for i := 0; i < 100; i++ {
 		state = evolve(state)

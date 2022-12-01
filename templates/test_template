@@ -12,12 +12,11 @@ import (
 func TestDayDDPartOne(t *testing.T) {
 	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "01"}
-	tools.GetInput("YYYY", "DD")
 	expected := map[string]int{
 		"1": 0,
 	}
 	for i, v := range expected {
-		if r := d.PartOne(fmt.Sprintf("../testdata/yYYYY/DD/1.%v.txt", i)); r != v {
+		if r := d.PartOne(tools.ReadFileBytes(fmt.Sprintf("../testdata/yYYYY/DD/1.%v.txt", i))); r != v {
 			t.Fatalf("Error with test data file 1.%v.txt. Expected %v, got %v\n", i, v, r)
 		}
 	}
@@ -26,12 +25,11 @@ func TestDayDDPartOne(t *testing.T) {
 func TestDayDDPartTwo(t *testing.T) {
 	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "02"}
-	tools.GetInput("YYYY", "DD")
 	expected := map[string]int{
 		"1": 0,
 	}
 	for i, v := range expected {
-		if r := d.PartTwo(fmt.Sprintf("../testdata/yYYYY/DD/2.%v.txt", i)); r != v {
+		if r := d.PartTwo(tools.ReadFileBytes(fmt.Sprintf("../testdata/yYYYY/DD/2.%v.txt", i))); r != v {
 			t.Fatalf("Error with test data file 2.%v.txt. Expected %v, got %v\n", i, v, r)
 		}
 	}

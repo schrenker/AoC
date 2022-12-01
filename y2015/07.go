@@ -102,8 +102,8 @@ var opMap = map[string]func(uint16, uint16) uint16{
 	"LSHIFT": lshift,
 }
 
-func (d Day07) PartOne(path string) interface{} {
-	operations := tools.ReadFileStringSlice(path)
+func (d Day07) PartOne(data []byte) interface{} {
+	operations := tools.ByteToStringSlice(data)
 	wires := make(wireMap)
 	for {
 		for i := 0; i < len(operations); i++ {
@@ -120,10 +120,10 @@ func (d Day07) PartOne(path string) interface{} {
 	return wires["a"]
 }
 
-func (d Day07) PartTwo(path string) interface{} {
-	operations := tools.ReadFileStringSlice(path)
+func (d Day07) PartTwo(data []byte) interface{} {
+	operations := tools.ByteToStringSlice(data)
 	wires := make(wireMap)
-	wires["b"] = d.PartOne(path).(uint16)
+	wires["b"] = d.PartOne(data).(uint16)
 	for {
 		for i := 0; i < len(operations); i++ {
 			err := wires.decode(operations[i])

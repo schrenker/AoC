@@ -6,8 +6,6 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
-
-	"github.com/schrenker/AoC/tools"
 )
 
 type Day12 struct{}
@@ -63,10 +61,9 @@ func procMap(m map[string]interface{}) float64 {
 	return acc
 }
 
-func (d Day12) PartOne(path string) interface{} {
-	data := tools.ReadFileString(path)
+func (d Day12) PartOne(data []byte) interface{} {
 	re := regexp.MustCompile(`[^\d\-,]`)
-	spl := strings.Split(re.ReplaceAllString(data, ""), ",")
+	spl := strings.Split(re.ReplaceAllString(string(data), ""), ",")
 	acc := 0
 	for _, v := range spl {
 		conv, _ := strconv.Atoi(v)
@@ -75,8 +72,7 @@ func (d Day12) PartOne(path string) interface{} {
 	return acc
 }
 
-func (d Day12) PartTwo(path string) interface{} {
-	data := tools.ReadFileBytes(path)
+func (d Day12) PartTwo(data []byte) interface{} {
 	var jsonDump []interface{}
 	err := json.Unmarshal(data, &jsonDump)
 	if err != nil {

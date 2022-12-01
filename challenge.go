@@ -3,8 +3,8 @@ package main
 import "github.com/schrenker/AoC/y2015"
 
 type challenge interface {
-	PartOne(string) interface{}
-	PartTwo(string) interface{}
+	PartOne([]byte) interface{}
+	PartTwo([]byte) interface{}
 }
 
 var challenges = map[string]challenge{

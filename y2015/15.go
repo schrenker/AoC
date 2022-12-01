@@ -88,14 +88,14 @@ func makeNutritiousCookie(cookie map[string]int, ingredients map[string]map[stri
 	return result
 }
 
-func (d Day15) PartOne(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
+func (d Day15) PartOne(data []byte) interface{} {
+	str := tools.ByteToStringSlice(data)
 	ingredients := make(map[string]map[string]int)
 	ingredientList := []string{}
 	properties := make([]string, 0)
 
 	for i := range data {
-		name, ing := newIngredientLight(data[i])
+		name, ing := newIngredientLight(str[i])
 		ingredients[name] = ing
 		ingredientList = append(ingredientList, name)
 	}
@@ -127,14 +127,14 @@ func (d Day15) PartOne(path string) interface{} {
 	return result
 }
 
-func (d Day15) PartTwo(path string) interface{} {
-	data := tools.ReadFileStringSlice(path)
+func (d Day15) PartTwo(data []byte) interface{} {
+	str := tools.ByteToStringSlice(data)
 	ingredients := make(map[string]map[string]int)
 	ingredientList := []string{}
 	properties := make([]string, 0)
 
-	for i := range data {
-		name, ing := newIngredientNutritious(data[i])
+	for i := range str {
+		name, ing := newIngredientNutritious(str[i])
 		ingredients[name] = ing
 		ingredientList = append(ingredientList, name)
 	}
