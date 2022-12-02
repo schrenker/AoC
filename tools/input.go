@@ -32,6 +32,7 @@ func getData(year, day string) []byte {
 		log.Fatalln(err)
 	}
 	req.AddCookie(cookie)
+	req.Header.Set("User-Agent", "Go http client by sebastian@zawadzki.tech - github.com/schrenker/AoC")
 
 	resp, err := client.Do(req)
 	if err != nil {
