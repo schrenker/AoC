@@ -112,7 +112,7 @@ tasks:
 
       Run tests for selected day, optionally specifying part.
     cmds:
-      - echo
+      - scripts/test.sh {{.CLI_ARGS}}
 
   tnew1:
     summary: |
@@ -120,7 +120,16 @@ tasks:
 
       Run tests for the part one of the newest existing entry on challenge list.
     cmds:
-      - echo
+      - scripts/test.sh {{.DAY}} 01
+    vars:
+      DAY:
+        sh: >
+          cat challenge.go |
+          tail -2 |
+          head -1 |
+          tr -d '[:space:]' |
+          cut -d '"' -f 2 |
+          tr '/' ' '
 
   tnew2:
     summary: |
@@ -128,7 +137,16 @@ tasks:
 
       Run tests for the part two of the newest existing entry on challenge list.
     cmds:
-      - echo
+      - scripts/test.sh {{.DAY}} 02
+    vars:
+      DAY:
+        sh: >
+          cat challenge.go |
+          tail -2 |
+          head -1 |
+          tr -d '[:space:]' |
+          cut -d '"' -f 2 |
+          tr '/' ' '
 
   testAll:
     summary: |
@@ -136,7 +154,7 @@ tasks:
 
       Run all tests, for all days, for all years.
     cmds:
-      - echo
+      - go test -run . ./test/...
 
   default:
     summary: |

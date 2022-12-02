@@ -2,10 +2,10 @@ package YYYY
 
 type DayDD struct{}
 
-func (d DayDD) PartOne(path string) interface{} {
+func (d DayDD) PartOne(data []byte) interface{} {
 	return 0
 }
 
-func (d DayDD) PartTwo(path string) interface{} {
+func (d DayDD) PartTwo(data []byte) interface{} {
 	return 0
 }
