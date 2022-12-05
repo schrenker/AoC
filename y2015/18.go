@@ -1,6 +1,8 @@
 package y2015
 
 import (
+	"bytes"
+
 	"github.com/schrenker/AoC/tools"
 )
 
@@ -26,7 +28,7 @@ func turnOnCornerLights(state [][]bool) {
 
 func createState(data []byte) [][]bool {
 	str := tools.ByteToStringSlice(data)
-	result := make([][]bool, len(data))
+	result := make([][]bool, len(str))
 	for i := range str {
 		result[i] = make([]bool, len(str[i]))
 		for j := range str[i] {
@@ -94,7 +96,7 @@ func evolve(state [][]bool) [][]bool {
 }
 
 func (d Day18) PartOne(data []byte) interface{} {
-	state := createState(data)
+	state := createState(bytes.TrimSpace(data))
 	for i := 0; i < 100; i++ {
 		state = evolve(state)
 	}
@@ -102,7 +104,7 @@ func (d Day18) PartOne(data []byte) interface{} {
 }
 
 func (d Day18) PartTwo(data []byte) interface{} {
-	state := createState(data)
+	state := createState(bytes.TrimSpace(data))
 	turnOnCornerLights(state)
 	for i := 0; i < 100; i++ {
 		state = evolve(state)

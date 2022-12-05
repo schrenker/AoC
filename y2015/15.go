@@ -1,6 +1,7 @@
 package y2015
 
 import (
+	"bytes"
 	"strconv"
 	"strings"
 
@@ -89,12 +90,12 @@ func makeNutritiousCookie(cookie map[string]int, ingredients map[string]map[stri
 }
 
 func (d Day15) PartOne(data []byte) interface{} {
-	str := tools.ByteToStringSlice(data)
+	str := tools.ByteToStringSlice(bytes.TrimSpace(data))
 	ingredients := make(map[string]map[string]int)
 	ingredientList := []string{}
 	properties := make([]string, 0)
 
-	for i := range data {
+	for i := range str {
 		name, ing := newIngredientLight(str[i])
 		ingredients[name] = ing
 		ingredientList = append(ingredientList, name)
@@ -128,7 +129,7 @@ func (d Day15) PartOne(data []byte) interface{} {
 }
 
 func (d Day15) PartTwo(data []byte) interface{} {
-	str := tools.ByteToStringSlice(data)
+	str := tools.ByteToStringSlice(bytes.TrimSpace(data))
 	ingredients := make(map[string]map[string]int)
 	ingredientList := []string{}
 	properties := make([]string, 0)

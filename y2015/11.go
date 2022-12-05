@@ -1,6 +1,8 @@
 package y2015
 
 import (
+	"bytes"
+
 	"github.com/schrenker/AoC/tools"
 )
 
@@ -69,10 +71,12 @@ func generateNextPass(pass []byte) []byte {
 }
 
 func (d Day11) PartOne(data []byte) interface{} {
+	data = bytes.TrimSpace(data)
 	return string(generateNextPass(data))
 }
 
 func (d Day11) PartTwo(data []byte) interface{} {
+	data = bytes.TrimSpace(data)
 	data = incrementPass(generateNextPass(data), len(data)-1)
 	return string(generateNextPass(data))
 }
