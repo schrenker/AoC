@@ -14,15 +14,12 @@ func getCrates(data []byte) ([][]string, int) {
 	stringData := tools.ByteToStringSlice(data)
 	crates := [][]string{}
 	index := 0
-	rgx := regexp.MustCompile(`[\[]`)
-	spaceRgx := regexp.MustCompile(`^ `)
 	for _, v := range stringData {
 		index++
 		if v == "" {
 			break
 		}
-		tmp := rgx.ReplaceAllString(strings.ReplaceAll(v, "]", " "), " ")
-		crates = append(crates, strings.Split(spaceRgx.ReplaceAllString(tmp, ""), ""))
+		crates = append(crates, strings.Split(v, ""))
 	}
 
 	return crates, index
@@ -32,7 +29,7 @@ func stackify(crates [][]string) []*tools.Stack[string] {
 	stacks := make([]*tools.Stack[string], 0)
 	for i := 0; i < len(crates)-1; i++ {
 		stacknum := 0
-		for j := 0; j < len(crates[i]); j += 4 {
+		for j := 1; j < len(crates[i]); j += 4 {
 
 			if stacknum >= len(stacks) {
 				stacks = append(stacks, tools.NewStack[string]())
