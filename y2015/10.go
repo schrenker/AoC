@@ -1,6 +1,7 @@
 package y2015
 
 import (
+	"bytes"
 	"strconv"
 )
 
@@ -28,6 +29,7 @@ func looknsay(seq []byte) []byte {
 }
 
 func (d Day10) PartOne(data []byte) interface{} {
+	data = bytes.TrimSpace(data)
 	for i := 0; i < 40; i++ {
 		data = looknsay(data)
 	}
@@ -35,6 +37,7 @@ func (d Day10) PartOne(data []byte) interface{} {
 }
 
 func (d Day10) PartTwo(data []byte) interface{} {
+	data = bytes.TrimSpace(data)
 	for i := 0; i < 50; i++ {
 		data = looknsay(data)
 	}

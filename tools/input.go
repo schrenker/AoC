@@ -1,7 +1,6 @@
 package tools
 
 import (
-	"bytes"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -86,5 +85,5 @@ func ReadFileBytes(path string) []byte {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	return bytes.TrimSpace(data)
+	return data
 }
