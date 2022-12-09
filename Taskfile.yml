@@ -59,7 +59,7 @@ tasks:
       Run benchmarks for selected day, optionally specifying part.
     cmds:
       - scripts/bench.sh {{.CLI_ARGS}}
-      - defer: rm -rf ./benchmark/*/input
+      # - defer: rm -rf ./benchmark/*/input
 
   bnew1:
     summary: |
@@ -86,7 +86,7 @@ tasks:
       Run benchmarks for the part two of the newest existing entry on challenge list.
     cmds:
       - scripts/bench.sh {{.DAY}} 02
-      - defer: rm -rf ./benchmark/*/input
+      # - defer: rm -rf ./benchmark/*/input
     vars:
       DAY:
         sh: >

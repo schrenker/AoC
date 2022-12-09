@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 )
 
@@ -78,6 +79,21 @@ func ByteToStringSlice(data []byte) []string {
 		return spl[:len(spl)-1]
 	}
 	return spl
+}
+
+func ByteToIntGrid(data []byte) [][]int {
+	result := make([][]int, 0)
+	tmp := make([]int, 0)
+	for i := range data {
+		if data[i] == '\n' {
+			result = append(result, tmp)
+			tmp = make([]int, 0)
+			continue
+		}
+		num, _ := strconv.Atoi(string(data[i]))
+		tmp = append(tmp, num)
+	}
+	return result
 }
 
 func ReadFileBytes(path string) []byte {
