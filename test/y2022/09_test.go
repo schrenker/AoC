@@ -26,7 +26,8 @@ func TestDay09PartTwo(t *testing.T) {
 	d := y2022.Day09{}
 	os.Args = []string{"cmd", "2022", "09", "02"}
 	expected := map[string]int{
-		"1": 0,
+		"1": 1,
+		"2": 36,
 	}
 	for i, v := range expected {
 		if r := d.PartTwo(tools.ReadFileBytes(fmt.Sprintf("../testdata/y2022/09/2.%v.txt", i))); r != v {
