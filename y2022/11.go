@@ -1,7 +1,6 @@
 package y2022
 
 import (
-	"fmt"
 	"log"
 	"regexp"
 	"strconv"
@@ -22,20 +21,26 @@ type monkey struct {
 	test      int
 }
 
+var factor int
+
 func (m *monkey) takeTurn(divideByThree bool) {
 	r := regexp.MustCompile(`old`)
 	length := len(m.items.List())
 	for i := 0; i < length; i++ {
 		conv := strconv.Itoa(m.items.Dequeue())
+
 		if conv == "0" {
 			return
 		}
+
 		m.inspected++
 		tmp := r.ReplaceAllString(m.operation, conv)
 		result := tools.StringMathToInt(tmp)
 
 		if divideByThree {
 			result = int(result / 3)
+		} else {
+			result = result % factor
 		}
 
 		if result%m.test == 0 {
@@ -46,11 +51,10 @@ func (m *monkey) takeTurn(divideByThree bool) {
 	}
 }
 
-func (d Day11) PartOne(data []byte) interface{} {
-	ops := tools.ByteToStringSlice(data)
+func spawnMonkeys(data []string) []*monkey {
 	monkeys := make([]*monkey, 0)
 
-	for _, v := range ops {
+	for _, v := range data {
 		if v == "" {
 			continue
 		}
@@ -64,47 +68,32 @@ func (d Day11) PartOne(data []byte) interface{} {
 	numRgx := regexp.MustCompile(`[\d]+`)
 	opRgx := regexp.MustCompile(`([a-z]{0,3}[0-9]* [+\-*\/] [a-z]{0,3}[0-9]*)`)
 
-	for i, m := 0, 0; i < len(ops); i, m = i+7, m+1 {
-		for _, v := range numRgx.FindAllString(ops[i+1], -1) {
+	for i, m := 0, 0; i < len(data); i, m = i+7, m+1 {
+		for _, v := range numRgx.FindAllString(data[i+1], -1) {
 			tmp, err := strconv.Atoi(v)
 			if err != nil {
 				log.Fatalln(err)
 			}
 			monkeys[m].items.Enqueue(tmp)
 		}
-		monkeys[m].operation = opRgx.FindString(ops[i+2])
+		monkeys[m].operation = opRgx.FindString(data[i+2])
 
-		tmp := numRgx.FindAllString(ops[i+3], -1)
-		num, err := strconv.Atoi(tmp[len(tmp)-1])
-		if err != nil {
-			log.Fatalln(err)
-		}
-
+		tmp := numRgx.FindAllString(data[i+3], -1)
+		num, _ := strconv.Atoi(tmp[len(tmp)-1])
 		monkeys[m].test = num
 
-		tmp = numRgx.FindAllString(ops[i+4], -1)
-		num, err = strconv.Atoi(tmp[len(tmp)-1])
-		if err != nil {
-			log.Fatalln(err)
-		}
-
+		tmp = numRgx.FindAllString(data[i+4], -1)
+		num, _ = strconv.Atoi(tmp[len(tmp)-1])
 		monkeys[m].success = monkeys[num]
 
-		tmp = numRgx.FindAllString(ops[i+5], -1)
-		num, err = strconv.Atoi(tmp[len(tmp)-1])
-		if err != nil {
-			log.Fatalln(err)
-		}
-
+		tmp = numRgx.FindAllString(data[i+5], -1)
+		num, _ = strconv.Atoi(tmp[len(tmp)-1])
 		monkeys[m].fail = monkeys[num]
 	}
+	return monkeys
+}
 
-	for i := 0; i < 20; i++ {
-		for _, m := range monkeys {
-			m.takeTurn(true)
-		}
-	}
-
+func countInspections(monkeys []*monkey) int {
 	inspections := make([]int, len(monkeys))
 	for _, m := range monkeys {
 		inspections = append(inspections, m.inspected)
@@ -113,59 +102,28 @@ func (d Day11) PartOne(data []byte) interface{} {
 	mostInspected := tools.GetMaxMultiple(2, inspections...)
 
 	return tools.MulAll(mostInspected...)
+
 }
 
-func (d Day11) PartTwo(data []byte) interface{} {
-	ops := tools.ByteToStringSlice(data)
-	monkeys := make([]*monkey, 0)
+func (d Day11) PartOne(data []byte) interface{} {
+	monkeys := spawnMonkeys(tools.ByteToStringSlice(data))
 
-	for _, v := range ops {
-		if v == "" {
-			continue
-		}
-		if strings.Fields(v)[0] == "Monkey" {
-			monkeys = append(monkeys, &monkey{
-				items: tools.NewQueue[int](),
-			})
+	for i := 0; i < 20; i++ {
+		for _, m := range monkeys {
+			m.takeTurn(true)
 		}
 	}
 
-	numRgx := regexp.MustCompile(`[\d]+`)
-	opRgx := regexp.MustCompile(`([a-z]{0,3}[0-9]* [+\-*\/] [a-z]{0,3}[0-9]*)`)
+	return countInspections(monkeys)
+}
 
-	for i, m := 0, 0; i < len(ops); i, m = i+7, m+1 {
-		for _, v := range numRgx.FindAllString(ops[i+1], -1) {
-			tmp, err := strconv.Atoi(v)
-			if err != nil {
-				log.Fatalln(err)
-			}
-			monkeys[m].items.Enqueue(tmp)
-		}
-		monkeys[m].operation = opRgx.FindString(ops[i+2])
+func (d Day11) PartTwo(data []byte) interface{} {
+	monkeys := spawnMonkeys(tools.ByteToStringSlice(data))
 
-		tmp := numRgx.FindAllString(ops[i+3], -1)
-		num, err := strconv.Atoi(tmp[len(tmp)-1])
-		if err != nil {
-			log.Fatalln(err)
-		}
+	factor = 1
 
-		monkeys[m].test = num
-
-		tmp = numRgx.FindAllString(ops[i+4], -1)
-		num, err = strconv.Atoi(tmp[len(tmp)-1])
-		if err != nil {
-			log.Fatalln(err)
-		}
-
-		monkeys[m].success = monkeys[num]
-
-		tmp = numRgx.FindAllString(ops[i+5], -1)
-		num, err = strconv.Atoi(tmp[len(tmp)-1])
-		if err != nil {
-			log.Fatalln(err)
-		}
-
-		monkeys[m].fail = monkeys[num]
+	for _, m := range monkeys {
+		factor *= m.test
 	}
 
 	for i := 0; i < 10000; i++ {
@@ -174,13 +132,5 @@ func (d Day11) PartTwo(data []byte) interface{} {
 		}
 	}
 
-	inspections := make([]int, 0, len(monkeys))
-	for _, m := range monkeys {
-		inspections = append(inspections, m.inspected)
-	}
-
-	fmt.Println(inspections)
-	mostInspected := tools.GetMaxMultiple(2, inspections...)
-
-	return tools.MulAll(mostInspected...)
+	return countInspections(monkeys)
 }
