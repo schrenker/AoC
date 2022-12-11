@@ -1,7 +1,10 @@
 package tools
 
 import (
+	"log"
 	"sort"
+	"strconv"
+	"strings"
 )
 
 // Get the highest number in the list
@@ -13,6 +16,15 @@ func GetMax(nums ...int) int {
 		}
 	}
 	return max
+}
+
+func GetMaxMultiple(amount int, nums ...int) []int {
+	sort.Ints(nums)
+	nums = Reverse(nums)
+	if len(nums) <= amount {
+		return nums
+	}
+	return nums[:amount]
 }
 
 // Get the lowest number in the list
@@ -86,4 +98,31 @@ func PMod(x, d int) int {
 		return x - d
 	}
 	return x + d
+}
+
+func StringMathToInt(s string) int {
+	operands := strings.Fields(s)
+	left, err := strconv.Atoi(operands[0])
+	if err != nil {
+		log.Fatalln(err)
+	}
+	right, err := strconv.Atoi(operands[2])
+	if err != nil {
+		log.Fatalln(err)
+	}
+	switch operands[1] {
+	case "+":
+		return left + right
+	case "-":
+		return left - right
+	case "*":
+		return left * right
+	case "/":
+		return left / right
+	case "%":
+		return left % right
+
+	}
+	log.Fatalf("No answer for: %v\n", s)
+	return 0
 }
