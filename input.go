@@ -1,9 +1,8 @@
-package tools
+package main
 
 import (
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -56,16 +55,16 @@ func checkIfInputAlreadyExists(year, day string) bool {
 	return true
 }
 
-func GetInput(year, day string) {
+func getInput(year, day string) {
 	if !checkIfInputAlreadyExists(year, day) {
-		err := ioutil.WriteFile(fmt.Sprintf("./input/%v/%v.txt", year, day), getData(year, day), 0644)
+		err := os.WriteFile(fmt.Sprintf("./input/%v/%v.txt", year, day), getData(year, day), 0644)
 		if err != nil {
 			log.Fatalln(err)
 		}
 	}
 }
 
-func GetDefaultInputPath() string {
+func getDefaultInputPath() string {
 	p, err := exec.Command("go", "env", "GOMOD").Output()
 	if err != nil {
 		log.Fatalln(err)
@@ -73,7 +72,7 @@ func GetDefaultInputPath() string {
 	return strings.TrimSpace(strings.Replace(string(p), "go.mod", "", 1)) + "input/" + os.Args[1] + "/" + os.Args[2] + ".txt"
 }
 
-func ByteToStringSlice(data []byte) []string {
+func byteToStringSlice(data []byte) []string {
 	spl := strings.Split(string(data), "\n")
 	if spl[len(spl)-1] == "" {
 		return spl[:len(spl)-1]
@@ -81,7 +80,7 @@ func ByteToStringSlice(data []byte) []string {
 	return spl
 }
 
-func ByteToIntGrid(data []byte) [][]int {
+func byteToIntGrid(data []byte) [][]int {
 	result := make([][]int, 0)
 	tmp := make([]int, 0)
 	for i := range data {
@@ -96,7 +95,7 @@ func ByteToIntGrid(data []byte) [][]int {
 	return result
 }
 
-func ReadFileBytes(path string) []byte {
+func readFileBytes(path string) []byte {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalln(err)
