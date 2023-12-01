@@ -46,7 +46,7 @@ task bnew1                    # Run benchmarks for latest generated day, part on
 task bnew2                    # Run benchmarks for latest generated day, part two.
 task benchAll                 # Run all benchmarks, for all days, for all years.
 
-task test -- YEAR DAY         # Run test for given day.
+task test -- YEAR DAY [PART]  # Run test for given day, with optional PART parameter.
 task tnew1                    # Run tests for latest generated day, part one.
 task tnew2                    # Run tests for latest generated day, part two.
 task testAll                  # Run all tests, for all days, for all years.
