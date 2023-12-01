@@ -1,4 +1,4 @@
-package main
+package input
 
 import (
 	"fmt"
@@ -55,7 +55,7 @@ func checkIfInputAlreadyExists(year, day string) bool {
 	return true
 }
 
-func getInput(year, day string) {
+func GetInput(year, day string) {
 	if !checkIfInputAlreadyExists(year, day) {
 		err := os.WriteFile(fmt.Sprintf("./input/%v/%v.txt", year, day), getData(year, day), 0644)
 		if err != nil {
@@ -64,7 +64,7 @@ func getInput(year, day string) {
 	}
 }
 
-func getDefaultInputPath() string {
+func GetDefaultInputPath() string {
 	p, err := exec.Command("go", "env", "GOMOD").Output()
 	if err != nil {
 		log.Fatalln(err)
@@ -95,7 +95,7 @@ func byteToIntGrid(data []byte) [][]int {
 	return result
 }
 
-func readFileBytes(path string) []byte {
+func ReadFileBytes(path string) []byte {
 	data, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalln(err)

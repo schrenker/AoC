@@ -11,6 +11,7 @@ mkShell {
     gomodifytags
     gopls
     gore
+    go-task
     gotests
     gotools
     nodejs

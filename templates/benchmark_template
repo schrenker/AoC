@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-    "github.com/schrenker/AoC/tools"
+    "github.com/schrenker/AoC/input"
 	"github.com/schrenker/AoC/yYYYY"
 )
 
@@ -12,7 +12,7 @@ func BenchmarkDayDDPartOne(b *testing.B) {
 	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "01"}
 	for i := 0; i < b.N; i++ {
-		d.PartOne(tools.ReadFileBytes(tools.GetDefaultInputPath()))
+		d.PartOne(input.ReadFileBytes(input.GetDefaultInputPath()))
 	}
 }
 
@@ -20,6 +20,6 @@ func BenchmarkDayDDPartTwo(b *testing.B) {
 	d := yYYYY.DayDD{}
 	os.Args = []string{"cmd", "YYYY", "DD", "02"}
 	for i := 0; i < b.N; i++ {
-		d.PartTwo(tools.ReadFileBytes(tools.GetDefaultInputPath()))
+		d.PartTwo(input.ReadFileBytes(input.GetDefaultInputPath()))
 	}
 }

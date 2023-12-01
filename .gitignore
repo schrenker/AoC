@@ -3,7 +3,7 @@
 *.log
 tmp/
 
-input/
+input/2023
 .envrc
 .go/
 .direnv/
