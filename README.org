@@ -34,19 +34,23 @@ There are branches y2022 and y2015, but they will probably be replaced.
 |----------+------+------+------+------+------+------+------+------+------|
 
 * Usage
-go-task is used to generate all boilerplate data, and to run tasks. Any command below is to be prefixed with 'task '. All 'YEAR' parameters acces 4 digit year. DAY accepts 2 digit day. Part accepts one of: [1,01,2,02]
-~gen -- YEAR DAY~          : Generates day file, along with it's test file and benchmark file.
-~run -- YEAR DAY PART~     : Runs given challenge.
-~new1~                     : Run latest generated day, part one.
-~new2~                     : Run latest generated day, part two.
-~bench -- YEAR DAY [PART]~ : Run benchmarks for a given day, with optional PART parameter.
-~bnew1~                    : Run benchmarks for latest generated day, part one.
-~bnew2~                    : Run benchmarks for latest generated day, part two.
-~benchAll~                 : Run all benchmarks, for all days, for all years.
-~test -- YEAR DAY~         : Run test for given day.
-~tnew1~                    : Run tests for latest generated day, part one.
-~tnew2~                    : Run tests for latest generated day, part two.
-~testAll~                  : Run all tests, for all days, for all years.
+go-task is used to generate all boilerplate data, and to run tasks. All 'YEAR' parameters acces 4 digit year. DAY accepts 2 digit day. Part accepts one of: [1,01,2,02]
+#+begin_src bash
+task gen -- YEAR DAY          # Generates day file, along with it's test file and benchmark file.
+task run -- YEAR DAY PART     # Runs given challenge.
+task new1                     # Run latest generated day, part one.
+task new2                     # Run latest generated day, part two.
+
+task bench -- YEAR DAY [PART] # Run benchmarks for a given day, with optional PART parameter.
+task bnew1                    # Run benchmarks for latest generated day, part one.
+task bnew2                    # Run benchmarks for latest generated day, part two.
+task benchAll                 # Run all benchmarks, for all days, for all years.
+
+task test -- YEAR DAY         # Run test for given day.
+task tnew1                    # Run tests for latest generated day, part one.
+task tnew2                    # Run tests for latest generated day, part two.
+task testAll                  # Run all tests, for all days, for all years.
+#+end_src
 
 * Requires Optimisation
 
