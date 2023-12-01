@@ -33,6 +33,21 @@ There are branches y2022 and y2015, but they will probably be replaced.
 |       25 |      |      |      |      |      |      |      |      |      |
 |----------+------+------+------+------+------+------+------+------+------|
 
+* Usage
+go-task is used to generate all boilerplate data, and to run tasks. Any command below is to be prefixed with 'task '. All 'YEAR' parameters acces 4 digit year. DAY accepts 2 digit day. Part accepts one of: [1,01,2,02]
+~gen -- YEAR DAY~          : Generates day file, along with it's test file and benchmark file.
+~run -- YEAR DAY PART~     : Runs given challenge.
+~new1~                     : Run latest generated day, part one.
+~new2~                     : Run latest generated day, part two.
+~bench -- YEAR DAY [PART]~ : Run benchmarks for a given day, with optional PART parameter.
+~bnew1~                    : Run benchmarks for latest generated day, part one.
+~bnew2~                    : Run benchmarks for latest generated day, part two.
+~benchAll~                 : Run all benchmarks, for all days, for all years.
+~test -- YEAR DAY~         : Run test for given day.
+~tnew1~                    : Run tests for latest generated day, part one.
+~tnew2~                    : Run tests for latest generated day, part two.
+~testAll~                  : Run all tests, for all days, for all years.
+
 * Requires Optimisation
 
 * Ugly code
