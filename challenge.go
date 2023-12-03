@@ -10,4 +10,5 @@ type challenge interface {
 var challenges = map[string]challenge{
 	"2023/01": y2023.Day01{},
 	"2023/02": y2023.Day02{},
+	"2023/03": y2023.Day03{},
 }
