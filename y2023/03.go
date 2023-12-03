@@ -8,6 +8,11 @@ import (
 
 type Day03 struct{}
 
+type gearCoords struct {
+	x int
+	y int
+}
+
 func isSymbolNoDot(b byte) bool {
 	return b != 46 &&
 		((b >= 33 && b <= 47) || (b >= 58 && b <= 64))
@@ -31,11 +36,6 @@ func checkSurroundingsForSymbol(inp []string, x, y int) bool {
 	return false
 }
 
-type gearCoords struct {
-	x int
-	y int
-}
-
 func checkSurroundingsForGear(inp []string, x, y int) []gearCoords {
 	coords := [][]int{{-1, -1}, {-1, 0}, {-1, 1},
 		{0, -1}, {0, 1},
@@ -51,9 +51,9 @@ func checkSurroundingsForGear(inp []string, x, y int) []gearCoords {
 	return gears
 }
 
-func containsGear(gs []gearCoords, g gearCoords) bool {
-	for _,i := range gs {
-		if g.x == i.x && g.y == i.y {
+func containsGear(gearBuffer []gearCoords, gear gearCoords) bool {
+	for _, g := range gearBuffer {
+		if gear.x == g.x && gear.y == g.y {
 			return true
 		}
 	}
@@ -63,24 +63,24 @@ func containsGear(gs []gearCoords, g gearCoords) bool {
 func (d Day03) PartOne(data []byte) interface{} {
 	acc := 0
 	inp := input.ByteToStringSlice(data)
-	var currNum []byte
+	var buffer []byte
 	isPartNumber := false
 	for i := range inp {
 		for j := range inp[i] {
 			if isNumber(inp[i][j]) {
-				currNum = append(currNum, inp[i][j])
+				buffer = append(buffer, inp[i][j])
 				if !isPartNumber {
 					isPartNumber = checkSurroundingsForSymbol(inp, i, j)
 				}
 				continue
 			}
-			if currNum != nil {
-				num, _ := strconv.Atoi(string(currNum))
+			if buffer != nil {
+				number, _ := strconv.Atoi(string(buffer))
 				if isPartNumber {
-					acc += num
+					acc += number
 				}
 				isPartNumber = false
-				currNum = nil
+				buffer = nil
 			}
 		}
 	}
@@ -89,37 +89,37 @@ func (d Day03) PartOne(data []byte) interface{} {
 }
 
 func (d Day03) PartTwo(data []byte) interface{} {
-	gears := make(map[gearCoords][]int)
+	gearMap := make(map[gearCoords][]int)
 	acc := 0
 	inp := input.ByteToStringSlice(data)
-	var currNum []byte
-	var currGear []gearCoords
+	var numberBuffer []byte
+	var gearBuffer []gearCoords
 
 	for i := range inp {
 		for j := range inp[i] {
 
 			if isNumber(inp[i][j]) {
-				currNum = append(currNum, inp[i][j])
-				for _,v := range checkSurroundingsForGear(inp, i, j) {
-					if !containsGear(currGear, v) {
-						currGear = append(currGear, v)
+				numberBuffer = append(numberBuffer, inp[i][j])
+				for _, gear := range checkSurroundingsForGear(inp, i, j) {
+					if !containsGear(gearBuffer, gear) {
+						gearBuffer = append(gearBuffer, gear)
 					}
 				}
 				continue
 			}
 
-			if currNum != nil {
-				num, _ := strconv.Atoi(string(currNum))
-				for _, v := range currGear {
-					gears[v] = append(gears[v], num)
+			if numberBuffer != nil {
+				num, _ := strconv.Atoi(string(numberBuffer))
+				for _, gear := range gearBuffer {
+					gearMap[gear] = append(gearMap[gear], num)
 				}
-				currNum = nil
-				currGear = nil
+				numberBuffer = nil
+				gearBuffer = nil
 			}
 		}
 	}
 
-	for _,v := range gears {
+	for _, v := range gearMap {
 		if len(v) == 2 {
 			acc += v[0] * v[1]
 		}
