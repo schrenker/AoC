@@ -3,7 +3,15 @@
 *.log
 tmp/
 
-input/2023
 .envrc
 .go/
 .direnv/
+/input/2015/
+/input/2016/
+/input/2017/
+/input/2018/
+/input/2019/
+/input/2020/
+/input/2021/
+/input/2022/
+/input/2023/
