@@ -1,0 +1,6 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/schrenker/AoC/benchmark/y2015
+BenchmarkDay04PartTwo-8   	       2	 717071542 ns/op
+PASS
+ok  	github.com/schrenker/AoC/benchmark/y2015	2.285s

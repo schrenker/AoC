@@ -11,4 +11,5 @@ var challenges = map[string]challenge{
 	"2015/01": y2015.Day01{},
 	"2015/02": y2015.Day02{},
 	"2015/03": y2015.Day03{},
+	"2015/04": y2015.Day04{},
 }
