@@ -65,7 +65,7 @@ tasks:
     summary: |
       Usage: task bnew1
 
-      Run benchmarks for the part one of the newest existing entry on challenge list.
+      Run benchmarks for the part one of the newest existing entry on challenge list, and save it to a file.
     cmds:
       - scripts/bench.sh {{.DAY}} 01
       - defer: rm -rf ./benchmark/*/input
@@ -83,7 +83,7 @@ tasks:
     summary: |
       Usage: task bnew2
 
-      Run benchmarks for the part two of the newest existing entry on challenge list.
+      Run benchmarks for the part two of the newest existing entry on challenge list, and save it to a file.
     cmds:
       - scripts/bench.sh {{.DAY}} 02
       # - defer: rm -rf ./benchmark/*/input

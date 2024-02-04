@@ -9,4 +9,6 @@ elif [ "$3" = '2' ] || [ "$3" = '02' ]; then
     PART="Two"
 fi
 
-go test -bench "Day${DAY}Part${PART}" ./benchmark/y"$YEAR"/...
+mkdir -p ./benchmark/results
+
+go test -bench "Day${DAY}Part${PART}" ./benchmark/y"$YEAR"/... | tee ./benchmark/results/"${YEAR}-${DAY}-Part${PART}.txt"
