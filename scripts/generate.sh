@@ -15,6 +15,9 @@ cp -n templates/test_template "test/y$1/$2_test.go"
 sed -i "s|YYYY|$1|g" "test/y$1/$2_test.go"
 sed -i "s|DD|$2|g" "test/y$1/$2_test.go"
 
+mkdir -p "testdata/y$1/$2"
+touch "testdata/y$1/$2/1.1.txt"
+touch "testdata/y$1/$2/2.1.txt"
 
 grep "$1/$2" challenge.go > /dev/null || tac challenge.go | sed -e "2i\"$1/$2\": y$1.Day$2{}," | tac | tee challenge.go > /dev/null
 
