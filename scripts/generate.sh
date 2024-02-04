@@ -15,7 +15,7 @@ cp -n templates/test_template "test/y$1/$2_test.go"
 sed -i "s|YYYY|$1|g" "test/y$1/$2_test.go"
 sed -i "s|DD|$2|g" "test/y$1/$2_test.go"
 
-mkdir -p "testdata/y$1/$2"
+mkdir -p "test/testdata/y$1/$2"
 touch "test/testdata/y$1/$2/1.1.txt"
 touch "test/testdata/y$1/$2/2.1.txt"
 
